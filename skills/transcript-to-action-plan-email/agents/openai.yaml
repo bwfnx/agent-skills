@@ -1,0 +1,3 @@
+interface:
+  display_name: "Transcript To Action Plan Email"
+  short_description: "turn meeting transcripts into a neoSerra-ready client follow-up email + follow-up deliverable menu"
