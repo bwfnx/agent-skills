@@ -1,0 +1,22 @@
+{
+  "repo": "agent-skills",
+  "canonical_root": "skills/",
+  "last_updated": "2026-03-24",
+  "skills": [
+    {
+      "slug": "transcript-to-action-plan-email",
+      "display_name": "Transcript To Action Plan Email",
+      "version": "v1.0",
+      "status": "active",
+      "owner": "BW Mason",
+      "canonical_path": "skills/transcript-to-action-plan-email/",
+      "target_workspaces": [
+        "personal",
+        "umd-enterprise"
+      ],
+      "packaged_zip_generated": false,
+      "approved_for_sharing": false,
+      "notes": "Canonical source normalized under skills/. Legacy top-level duplicate still exists outside canonical root."
+    }
+  ]
+}
