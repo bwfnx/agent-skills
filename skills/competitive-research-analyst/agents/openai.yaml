@@ -1,0 +1,10 @@
+version: "1"
+interface:
+  display_name: "Competitive Research Analyst"
+  short_description: "Up-to-date competitor, pricing, and market analysis using web OSINT"
+  icon: "chart-bar"
+  accent_color: "#1F6FEB"
+behavior:
+  tool_preferences:
+    - web
+    - file_search
