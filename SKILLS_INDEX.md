@@ -11,6 +11,7 @@ Any duplicate skill folders outside `skills/` should be treated as legacy copies
 | Skill Slug | Display Name | Current Version | Canonical Path | Status | Notes |
 |---|---|---:|---|---|---|
 | `transcript-to-action-plan-email` | Transcript To Action Plan Email | v1.0 | `skills/transcript-to-action-plan-email/` | Active | Converts SBDC meeting transcripts into NeoSerra-ready follow-up emails plus a follow-up menu |
+| `competitive-research-analyst` | Competitive Research Analyst | v1.0 | `skills/competitive-research-analyst/` | Draft | Web-first competitive research skill for small businesses with mandatory current open-source competitor analysis |
 
 ## Suggested metadata to maintain over time
 For each skill, keep these current:
