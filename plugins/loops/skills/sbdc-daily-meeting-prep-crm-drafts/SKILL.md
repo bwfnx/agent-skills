@@ -55,7 +55,7 @@ search, wiki lookup) and returns a **compact structured JSON** (target: under
   "resourcesToHaveReady": ["from wiki + prior threads"],
   "risksOrMissing": ["what could not be found"],
   "suggestedOpening": "one sentence",
-  "neoserraDraftReady": true,
+  "crmDraftReady": true,
   "evidenceReviewed": ["list of sources checked"],
   "topicsDiscussed": ["from prior meeting context"],
   "adviceGiven": ["from prior threads"],
