@@ -62,7 +62,7 @@ Once the user has answered all 20 questions, compile everything into a single ma
 ```markdown
 # {Context} Wiki Corrections and Additions — YYYY-MM-DD
 
-Source: 20-question interview session with {{USER}} Mason.
+Source: 20-question interview session with {{USER}}.
 
 ---
 

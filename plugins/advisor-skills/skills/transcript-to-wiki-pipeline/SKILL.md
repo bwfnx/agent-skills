@@ -1,9 +1,9 @@
 ---
 name: transcript-to-wiki-pipeline
-description: Process {{ORG}} Zoom training transcript Markdown files through the archive pipeline. Use when asked to turn new SBDC AI Co-Working Hour or training transcripts into reviewed summaries, Claromentis article drafts, wiki ingestion packets, or to batch-process pending files in `sbdc-advising/raw/training-media/zoom-archive/02_Transcripts`.
+description: Process SBDC Zoom training transcript Markdown files through the archive pipeline. Use when asked to turn new SBDC AI Co-Working Hour or training transcripts into reviewed summaries, Claromentis article drafts, wiki ingestion packets, or to batch-process pending files in `sbdc-advising/raw/training-media/zoom-archive/02_Transcripts`.
 ---
 
-# SBDC Transcript To Wiki Pipeline
+# Transcript To Wiki Pipeline
 
 Use this skill to process one transcript, or all pending transcripts, through the SBDC Zoom training archive pipeline.
 

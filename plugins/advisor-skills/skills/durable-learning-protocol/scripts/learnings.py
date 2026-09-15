@@ -25,10 +25,26 @@ Add example
      --type pitfall --confidence 9 --usefulness 9 --source user-stated \
      --evidence "{{USER}} confirmed 2026-08-15."
 """
-import argparse, json, os, re, sys, datetime
+import argparse, json, os, re, sys, datetime, subprocess
 
 NAMESPACES = ["global", "fnx-pearl", "sbdc", "northfork", "personal"]
-ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "memory", "learnings")
+
+
+def _workspace_root():
+    """LEARNINGS_ROOT env var, else the git top-level of the current directory, else the current directory."""
+    env = os.environ.get("LEARNINGS_ROOT")
+    if env:
+        return os.path.abspath(env)
+    try:
+        r = subprocess.run(["git", "rev-parse", "--show-toplevel"], capture_output=True, text=True, timeout=10)
+        if r.returncode == 0 and r.stdout.strip():
+            return r.stdout.strip()
+    except Exception:  # noqa: BLE001
+        pass
+    return os.getcwd()
+
+
+ROOT = os.path.join(_workspace_root(), "memory", "learnings")
 
 
 def slug(text, maxlen=60):
@@ -125,7 +141,6 @@ def cmd_add(args):
 
 def cmd_list(args):
     # Read-side query. Bare = one-line index; --grep/--skill/--full print whole rows.
-    # Replaces the old .gstack query-learnings.py (that store is retired, 2026-09-12).
     rows = [o for _ns, _p, o in iter_entries(args.namespace)
             if args.all or (o.get("status") or "active") == "active"]
     if args.full:

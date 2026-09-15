@@ -44,11 +44,7 @@ These are the failures that recur in AI-built apps. Check every one that applies
 
 Per-build pass/fail is reported in-session, not stored — no new persistent file.
 
-But when the audit surfaces a *recurring trap worth remembering* (a mistake pattern that would help future builds avoid it), record it as a Durable Learning Protocol pitfall. If the gstack durable learning system is available, append to the project learnings store at `{{HOME}}\.gstack\projects\bwfnx-wikis\`:
-
-- Hot row to `learnings.jsonl`, cold row to `learnings-evidence.jsonl`, 1:1, with `type: "pitfall"` and the correct `namespace` (`global|fnx-pearl|sbdc|northfork|personal`). Keep contexts separate.
-- Only save when both `confidence` and `usefulness` are 8 or higher; otherwise propose it. Do not include client PII, account numbers, or financial specifics.
-- Run `python validate-learnings.py` afterward. Write JSONL as UTF-8 without a BOM.
+But when the audit surfaces a *recurring trap worth remembering* (a mistake pattern that would help future builds avoid it), record it as a Durable Learning Protocol pitfall. If the `durable-learning-protocol` skill is installed, record each durable finding with `py scripts/learnings.py add --namespace <ns> --key <kebab-key> --insight "..." --type pitfall|pattern|preference|tool|operational --confidence N --usefulness N --source observed --evidence "..."` from the workspace root. Otherwise list the findings at the end of the audit for the user to save.
 
 If write access isn't available, list proposed pitfall learnings at the end for {{USER}} to save.
 

@@ -6,6 +6,7 @@ description: Governed long-term memory consolidation for Codex runs. Use when {{
 # Durable Learning Protocol
 
 The store lives at `memory/learnings/<namespace>/<date>-<key>.json` under your workspace root, managed only by `scripts/learnings.py` (`add | list | compile | prune`). Never hand-edit those files or read the compiled `_views/*.jsonl` whole; if you use the `guardrails` plugin, `guardrails.example.json` already blocks both.
+Run `scripts/learnings.py` from your workspace root (or set `LEARNINGS_ROOT`); the store is resolved from the git top-level of the current directory.
 
 ## Overview
 
