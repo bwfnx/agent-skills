@@ -29,7 +29,7 @@ Placeholders to replace, or leave for the loop to ask about:
 |---|---|---|
 | daily-central | daily, early morning | Builds and sends the day's brief from the ledger, calendar, and mail follow-ups |
 | reply-clear | daily, after the brief | Reads replies to the brief and closes or reopens the items they name |
-| sbdc-daily-meeting-prep-neoserra-drafts | daily | Prep packet and CRM drafts for today's client meetings |
+| sbdc-daily-meeting-prep-crm-drafts | daily | Prep packet and CRM drafts for today's client meetings |
 | sbdc-post-meeting | daily, midday | Safety-net sweep and dispatcher for post-meeting processing |
 | weekly-action-report | Friday afternoon | Weekly action-log entry from mail, calendar, and sessions |
 | email-to-playground | weekly | Pulls self-sent tagged emails and attachments into the workspace |

@@ -1,5 +1,5 @@
 ---
-name: sbdc-daily-meeting-prep-neoserra-drafts
+name: sbdc-daily-meeting-prep-crm-drafts
 description: Daily SBDC meeting prep and {{CRM}} draft packet for {{USER}}
 ---
 
@@ -92,7 +92,7 @@ read truncates silently. Query it with the two-stage index/detail pattern instea
 3. Pull full text for only those with `py {{WORKSPACE_ROOT}}/learnings.py list --full KEY1 KEY2 ...`.
 
 Useful shortcuts: `--namespace sbdc` narrows the index to SBDC entries;
-`--skill sbdc-daily-meeting-prep-neoserra-drafts` (or `--skill sbdc-post-meeting`)
+`--skill sbdc-daily-meeting-prep-crm-drafts` (or `--skill sbdc-post-meeting`)
 returns the full text of everything written by that task; `--grep TERM` returns
 full rows matching a term.
 
@@ -100,7 +100,7 @@ Prioritise, in this order:
 
 - Anything describing a mistake that must not be repeated.
 - Entries in the `sbdc` namespace, and entries whose `skill` is
-  `sbdc-daily-meeting-prep-neoserra-drafts` or `sbdc-post-meeting`.
+  `sbdc-daily-meeting-prep-crm-drafts` or `sbdc-post-meeting`.
 - Entries describing how {{USER}}'s systems and connectors behave.
 
 Each entry is one JSON file carrying every field (type, confidence, evidence, ...),
