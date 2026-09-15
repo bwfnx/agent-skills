@@ -3,7 +3,7 @@ name: reply-clear
 description: Read replies to the Daily Central email and close (or reopen) the ledger items they name, via {{WORKSPACE_ROOT}}/reply_clear.py
 ---
 
-> **Schedule:** Daily Central email and close (or reopen) the
+> **Schedule:** Twice daily, 10:00 AM and 9:00 PM ET
 > **Needs:** Gmail, workspace files
 > **Helper scripts (yours, not included):** learnings.py, ledger.py, reply_clear.py
 

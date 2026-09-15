@@ -4,7 +4,7 @@ description: Monday 6pm ET: scan SBDC Zoom archive, draft 03/04/05 for new trans
 ---
 
 > **Schedule:** Monday 6pm ET
-> **Needs:** Gmail, workspace files, Zoom
+> **Needs:** workspace files, Zoom
 > **Helper scripts (yours, not included):** _wiki-infrastructure/zoom_training_media_archive.py
 
 Process the SBDC AI Co-Working / training Zoom pipeline for any NEW sessions. Work only inside the staged archive at `{{WORKSPACE_ROOT}}/sbdc-advising/raw/training-media/zoom-archive/`. Stages: `01_Raw Zoom Exports`, `02_Transcripts`, `03_Reviewed Summaries`, `04_Claromentis Drafts`, `05_Wiki Inputs`; manifest at `00_Master Index\zoom-training-media-manifest.csv`; per-folder `metadata.json` in each `01_Raw Zoom Exports\<session>\`.

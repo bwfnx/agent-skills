@@ -53,7 +53,7 @@ Search for recent tech team email threads:
 
 ### Google Drive
 Search for:
-- The "Tech Team Meeting Agenda" document (Google Doc ID: 1MkaL1u2MtZwb_gWJIRc2xZf8-4jTMW0-7NHd06TU83E) — review the most recent entries for last meeting's content
+- The "Tech Team Meeting Agenda" document (Google Doc ID: [Google Doc ID]) — review the most recent entries for last meeting's content
 - Meeting attendance records from Google Meet
 - Any shared documents related to upcoming events, funding, or partner updates
 

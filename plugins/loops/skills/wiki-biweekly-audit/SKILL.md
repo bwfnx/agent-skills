@@ -1,6 +1,6 @@
 ---
 name: wiki-biweekly-audit
-description: SBDC WIKI AUDIT
+description: Biweekly SBDC wiki content audit — coverage, accuracy, and synthesis gaps
 ---
 
 > **Schedule:** Every two weeks

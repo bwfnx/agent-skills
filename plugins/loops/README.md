@@ -22,6 +22,7 @@ Placeholders to replace, or leave for the loop to ask about:
 | `{{WORKSPACE_ROOT}}` | The folder your notes, wiki, and outputs live in |
 | `{{ORG}}` | Your organization |
 | `{{USER}}` | You |
+| `{{TEAM_DRIVE}}` | A shared team drive folder the loop writes packets to |
 
 ## The loops
 

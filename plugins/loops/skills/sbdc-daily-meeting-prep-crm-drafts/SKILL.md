@@ -114,8 +114,8 @@ Do this **before** writing any prep, any {{CRM}} draft, or any follow-up email. 
 
 **The definitive test is the Google Meet attendance sheet roster.** For each client meeting, find the attendance doc in the meeting's Drive folder (titled `<Meeting Name> - <date> - Attendance`) and read it. It is a tiny file, two to four rows.
 
-- **No non-`@umd.edu` attendee row = the client never joined = NO-SHOW.**
-- A row with a masked email (rendered like `fkel****@***.com`) is the client. External emails are always masked; `@umd.edu` addresses appear in full. Match clients by the First name / Last name columns, not by email.
+- **No attendee row from outside {{ORG}}'s email domain = the client never joined = NO-SHOW.**
+A row with a masked email (rendered like `fkel****@***.com`) is the client. External emails are always masked; addresses on {{ORG}}'s email domain appear in full. Match clients by the First name / Last name columns, not by email.
 
 Signals that are **NOT** reliable on their own:
 
@@ -311,7 +311,7 @@ today. One-time tasks auto-disable after firing but are not removed, so without
 this the task list grows without bound.
 
 **Then dispatch.** For each of today's meetings that looks like a client session
-(external / non-`@umd.edu` attendee, and not LUNCH, Planning, Paperwork, Tag Up,
+(external attendee from outside {{ORG}}'s email domain, and not LUNCH, Planning, Paperwork, Tag Up,
 or another internal meeting), call `create_scheduled_task` with:
 
 - `taskId`: `post-meeting-YYYYMMDD-HHMM-<short-client-slug>` using the meeting's

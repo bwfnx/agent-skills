@@ -4,7 +4,7 @@ description: Weekly Monday morning agenda packet for the SBDC AI Co-Working Hour
 ---
 
 > **Schedule:** Weekly Monday morning agenda packet
-> **Needs:** Gmail, Google Calendar, workspace files, Drive
+> **Needs:** Gmail, Google Calendar, workspace files, Drive, team drive
 > **Helper scripts (yours, not included):** none
 
 # SBDC AI Co-Working Hour Agenda Prep
@@ -31,14 +31,14 @@ Read these wiki articles from `{{WORKSPACE_ROOT}}/sbdc-advising/wiki/`:
 - `aiu-knowledge-management-project.md`
 - `ai-tool-vetting.md`
 - `applied-ai-curriculum.md`
-- Recent files in `SBDC WORKSPACE/outputs/`
-- Recent files in `SBDC WORKSPACE/umd-ai-grant/` if relevant
+- Recent files in `{{TEAM_DRIVE}}/outputs/`
+- Recent files in `{{TEAM_DRIVE}}/umd-ai-grant/` if relevant
 
 Review SBDC/UMD Calendar and Gmail for:
 
 - The upcoming Monday co-working event
 - AI Overflow context
-- Recent AI-related emails from Candace, Antonio, Herbert, Diane, Luis, Craig, Virginia, Alvin, Mya, or statewide AI peers
+- Recent AI-related emails from [SBDC colleagues] or statewide AI peers
 - Any artifacts or blockers mentioned since the prior session
 
 Optionally review current AI release/news sources only if browsing or connected sources are available. If not available, state that the news section needs manual fill-in.

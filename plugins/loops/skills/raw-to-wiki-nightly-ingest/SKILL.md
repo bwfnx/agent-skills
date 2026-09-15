@@ -4,7 +4,7 @@ description: Scan SBDC raw/ folders for new files, extract into wiki articles in
 ---
 
 > **Schedule:** Tue/Thu/Sat ~1:30 AM ET (despite the name)
-> **Needs:** {{CRM}}, workspace files, Drive
+> **Needs:** {{CRM}}, workspace files, Drive, team drive
 > **Helper scripts (yours, not included):** _sync-work/navcheck.py, _wiki-infrastructure/pending-push.ps1, build-sbdc-wiki-fieldmanual.py, ledger.py, pending-push.ps1, raw-to-wiki-ingest.py, wikisync.py
 
 # Raw-to-Wiki Nightly Ingest — SBDC Only
@@ -33,7 +33,7 @@ The wiki's sync model changed on 2026-07-28. Older instructions that treat Googl
 |---|---|
 | `{{WORKSPACE_ROOT}}/sbdc-advising/wiki/` | **CANONICAL.** Write articles here. Has git history. Netlify serves it. |
 | `{{WORKSPACE_ROOT}}/sbdc-advising/wiki/` | A **directory junction** pointing at the line above. Same bytes, not a second copy. |
-| `H:\...\SBDC WORKSPACE\wiki\` | **Read-only inbox.** Do NOT write wiki articles here any more. |
+| `{{TEAM_DRIVE}}/wiki/` | **Read-only inbox.** Do NOT write wiki articles here any more. |
 
 **Write wiki articles to the `[wiki repo]` path.** The Drive `wiki\` folder is drained *from*, never written *to*.
 
@@ -49,7 +49,7 @@ The wiki's sync model changed on 2026-07-28. Older instructions that treat Googl
 There are **two** raw folders, and older versions of this task only scanned one:
 
 - `{{WORKSPACE_ROOT}}/sbdc-advising/raw/`
-- `H:\...\SBDC WORKSPACE\raw\`
+- `{{TEAM_DRIVE}}/raw/`
 
 They are substantially different (as of 2026-07-28: 337 vs 234 entries). Scan **both**.
 
@@ -137,7 +137,7 @@ subagent's `section` field tells the parent where each block goes.
 
 ## Step 1 — Scan both raw/ folders
 
-Look for new or recently modified files in both raw folders. Track processed files via `raw-ingest-log.md` in `SBDC WORKSPACE\outputs\` (append in place via the `H:` mount — never via the Drive API).
+Look for new or recently modified files in both raw folders. Track processed files via `raw-ingest-log.md` in `{{TEAM_DRIVE}}/outputs/` (append in place via the mounted team drive — never via the Drive API).
 
 **Early exit:** if no new files, report "No new raw files — skipped." and stop.
 
@@ -213,7 +213,7 @@ through Windows.
 
 ## Step 6 — Update the ingest log
 
-Append each processed filename and date to `raw-ingest-log.md` in `SBDC WORKSPACE\outputs\` via the `H:` mount (`Add-Content`). Never create a fresh log via the Drive API — that orphans the history as a duplicate.
+Append each processed filename and date to `raw-ingest-log.md` in `{{TEAM_DRIVE}}/outputs/` via the mounted team drive (`Add-Content`). Never create a fresh log via the Drive API — that orphans the history as a duplicate.
 
 ## Step 7 — Duplicate safety net
 
@@ -221,7 +221,7 @@ Append each processed filename and date to `raw-ingest-log.md` in `SBDC WORKSPAC
 
 1. Inspect with `py {{WORKSPACE_ROOT}}/wikisync.py shadows` — for each shadow it prints the lines absent from canonical *and* the closest matching canonical line, so you can tell a genuine addition from a worse reword.
 2. Merge only what is genuinely missing. **Never bulk-merge.**
-3. Retire the handled file: `py {{WORKSPACE_ROOT}}/wikisync.py retire-shadow "<name>" --apply` — moves it to `SBDC WORKSPACE\delete\` as `<name>-ORIGINAL-superseded-YYYY-MM-DD.md`. **Never permanently delete.**
+3. Retire the handled file: `py {{WORKSPACE_ROOT}}/wikisync.py retire-shadow "<name>" --apply` — moves it to `{{TEAM_DRIVE}}/delete/` as `<name>-ORIGINAL-superseded-YYYY-MM-DD.md`. **Never permanently delete.**
 
 ## Step 8 — Report
 

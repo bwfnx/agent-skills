@@ -4,7 +4,7 @@ description: Weekly funding opportunity to SBDC client matching packet
 ---
 
 > **Schedule:** Weekly funding opportunity
-> **Needs:** Gmail, Google Calendar, Drive
+> **Needs:** Gmail, Google Calendar, Drive, team drive
 > **Helper scripts (yours, not included):** none
 
 # Weekly SBDC Funding Opportunity Match
@@ -120,7 +120,7 @@ defect this task has produced: a duplicate `... (1).md` on 2026-08-10 and a 15-b
 **Write exactly one file, to exactly this path, with exactly this name:**
 
 ```
-H:\My Drive\SBDC\AI Team\SBDC WORKSPACE\outputs\SBDC Funding Match Packet - Week of YYYY-MM-DD (DRAFT).md
+{{TEAM_DRIVE}}/outputs/SBDC Funding Match Packet - Week of YYYY-MM-DD (DRAFT).md
 ```
 
 `YYYY-MM-DD` is the **Monday** the packet covers, not the day it runs.
@@ -129,8 +129,8 @@ H:\My Drive\SBDC\AI Team\SBDC WORKSPACE\outputs\SBDC Funding Match Packet - Week
 
 1. **Never use the Google Drive API to write this file.** `create_file` cannot update in
    place — it makes a second file with the same title and Drive's desktop client renames one
-   to `foo (1).md`. That is exactly what happened on 2026-08-10. Write through the `H:\`
-   filesystem mount instead. The Drive API is fine for **read-only discovery**.
+   to `foo (1).md`. That is exactly what happened on 2026-08-10. Write through the mounted
+   team drive filesystem instead. The Drive API is fine for **read-only discovery**.
 2. **Markdown only. Never write an `.html` file to `outputs/`.** The styled, interactive
    version stays a chat artifact and is not persisted to disk. The 2026-08-06 run created an
    empty `.html` stub it then could not fill, because the Drive API has no update-in-place
