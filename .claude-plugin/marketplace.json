@@ -1,0 +1,27 @@
+{
+  "name": "bwfnx",
+  "description": "Brandon Mason's Claude setup: guardrail hooks, advisory skills, scheduled-task loops, and the Maryland SBDC toolkit.",
+  "owner": { "name": "Brandon Mason" },
+  "plugins": [
+    {
+      "name": "guardrails",
+      "source": "./plugins/guardrails",
+      "description": "Hooks: destructive git asks first, CRLF-churn commits are refused, session start/end protocol, protected paths, big-file read guard. Configure per project with .claude/guardrails.json."
+    },
+    {
+      "name": "advisor-skills",
+      "source": "./plugins/advisor-skills",
+      "description": "Ten advisory and workflow skills: SBIR/STTR proposal review, funding-match packet, wiki interview, teardown, build verification audit, durable learning protocol, AI analyst, transcript-to-wiki pipeline, chief of staff, email follow-ups."
+    },
+    {
+      "name": "loops",
+      "source": "./plugins/loops",
+      "description": "23 scheduled-task templates for a daily and weekly operating rhythm (daily brief, post-meeting sweep, weekly reports, wiki audits). Placeholders for your email, CRM, and workspace."
+    },
+    {
+      "name": "sbdc-toolkit",
+      "source": { "source": "github", "repo": "bwfnx/sbdc-toolkit" },
+      "description": "Maryland SBDC advisor toolkit: 14 skills for client follow-up emails, meeting notes, SOPs, underwriting, grants, business model canvas, TAM-SAM-SOM, marketing plans, proposals, success stories, referrals, and newsletters."
+    }
+  ]
+}

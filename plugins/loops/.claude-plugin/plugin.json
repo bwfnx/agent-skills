@@ -1,0 +1,7 @@
+{
+  "name": "loops",
+  "version": "1.0.0",
+  "description": "Scheduled-task templates for a daily and weekly operating rhythm. Paste one into your scheduler or run it as /loops:<name>.",
+  "author": { "name": "Brandon Mason" },
+  "license": "MIT"
+}
