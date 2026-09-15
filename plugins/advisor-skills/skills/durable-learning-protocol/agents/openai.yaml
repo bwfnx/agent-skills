@@ -1,0 +1,4 @@
+interface:
+  display_name: "Durable Learning Protocol"
+  short_description: "Governed long-term memory capture"
+  default_prompt: "Use $durable-learning-protocol to identify durable learnings from this work."

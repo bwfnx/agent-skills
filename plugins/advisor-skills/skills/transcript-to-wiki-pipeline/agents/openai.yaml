@@ -1,0 +1,3 @@
+display_name: SBDC Transcript Pipeline
+short_description: Build SBDC transcript review packets.
+default_prompt: Process the new SBDC transcript through the archive pipeline.

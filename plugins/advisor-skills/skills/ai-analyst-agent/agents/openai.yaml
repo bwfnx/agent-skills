@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Analyst Agent"
+  short_description: "Bias-resistant analytical judgments"
+  default_prompt: "Use $ai-analyst-agent to produce a structured assessment of competing hypotheses."

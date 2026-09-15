@@ -1,0 +1,4 @@
+interface:
+  display_name: "SBIR Proposal Review"
+  short_description: "Pre-submission federal proposal review"
+  default_prompt: "Use $sbir-proposal-review to review this proposal before submission."

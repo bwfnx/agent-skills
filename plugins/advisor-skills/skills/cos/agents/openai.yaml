@@ -1,0 +1,4 @@
+interface:
+  display_name: "Chief of Staff"
+  short_description: "What's behind, what's next"
+  default_prompt: "Use $cos to tell me what I'm behind on and what to do next."

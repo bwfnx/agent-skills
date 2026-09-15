@@ -1,0 +1,4 @@
+interface:
+  display_name: "Wiki Interview"
+  short_description: "20-question wiki gap interview"
+  default_prompt: "Use $wiki-interview to find and fix gaps in this wiki."
