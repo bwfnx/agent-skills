@@ -3,7 +3,7 @@
 
 If the working tree has uncommitted changes that appeared or changed DURING
 this session, this fires ONE blocking reminder to commit the work authored as
-your identity and to prepend a HANDOFF-LOG.md entry before stopping. Files that
+your identity and to prepend a handoff entry before stopping. Files that
 were already dirty when the session started (the pre-existing backlog) are
 ignored, using the snapshot session_start.py wrote for this session_id. With
 no snapshot (session started before that hook existed) it falls back to

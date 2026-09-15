@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""PreToolUse guard for git on the shared Playground repo.
+"""PreToolUse guard for git on a shared repo.
 
 Three checks on Bash / PowerShell commands:
 
