@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 """PostToolUse check — light wiki hygiene reminder (non-blocking).
 
-After an Edit/Write to a wiki/*.md article, surfaces a note if the file lacks a
-one-paragraph summary near the top or isn't listed in that wiki's INDEX.md — the
-two rules from CLAUDE.md most easily forgotten. Wikis live per context
-(sbdc-advising/wiki, northfork-farm/wiki, ...; symlinked into wikis-git), so the
-check matches any `wiki/` folder under the project and looks for INDEX.md in the
-same wiki folder as the edited file. Never blocks (the edit already
-happened); it only prints a systemMessage the user and model can see.
+After an Edit/Write to a .md file inside a wiki folder (folder names from
+.claude/guardrails.json `wiki_dirs`, default ["wiki"]), surfaces a note if the
+file lacks a one-paragraph summary near the top or isn't listed in that folder's
+INDEX.md. Never blocks; prints a systemMessage only.
 
 Configured in .claude/settings.json under "PostToolUse" with matcher
 "Write|Edit|MultiEdit".
@@ -16,9 +13,8 @@ import json
 import os
 import sys
 
-
-def project_root():
-    return os.environ.get("CLAUDE_PROJECT_DIR") or os.getcwd()
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _config import load as load_config, project_root  # noqa: E402
 
 
 def main():
@@ -40,10 +36,12 @@ def main():
     if not (target == root or target.startswith(root + os.sep)):
         sys.exit(0)
     rel = os.path.relpath(target, root).split(os.sep)
-    if rel[0] in (".git", ".claude", "_archive") or "wiki" not in rel[:-1]:
+    wiki_dirs = load_config(root).get("wiki_dirs") or ["wiki"]
+    hits = [i for i, part in enumerate(rel[:-1]) if part in wiki_dirs]
+    if rel[0] in (".git", ".claude", "_archive") or not hits:
         sys.exit(0)
-    # The wiki folder is the nearest ancestor named "wiki"; INDEX.md lives there.
-    wiki_depth = len(rel) - 1 - rel[:-1][::-1].index("wiki")
+    # The wiki folder is the nearest ancestor with a configured name; INDEX.md lives there.
+    wiki_depth = hits[-1] + 1
     wiki = os.path.join(root, *rel[:wiki_depth])
 
     stem = os.path.splitext(os.path.basename(target))[0]
@@ -86,7 +84,7 @@ def main():
 
     if notes:
         msg = (f"Wiki hygiene — {os.path.basename(target)}: " + "; ".join(notes) +
-               ". CLAUDE.md asks every wiki file to open with a one-paragraph "
+               ". Every wiki file should open with a one-paragraph "
                "summary, appear in INDEX.md, and link related topics with [[...]].")
         print(json.dumps({"systemMessage": msg}))
     sys.exit(0)

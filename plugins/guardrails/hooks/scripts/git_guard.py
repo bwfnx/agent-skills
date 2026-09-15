@@ -8,18 +8,16 @@ Three checks on Bash / PowerShell commands:
    clean -f/-d/-x, branch -D, filter-repo / filter-branch.
    Four agents share this repo; these are never auto-approved.
 
-2. `git commit` identity  -> "deny" unless the commit will be authored as
-   one of the contract identities (2026-08-15 coordination architecture §2.4):
-   Claude-<x>, Codex, ChatGPT, Local-<model>. Satisfied by --author=... on the
-   command or by `git config user.name` in the working directory.
+2. `git commit` identity  -> "deny" unless the author name matches the
+   `commit_identities` regex in .claude/guardrails.json. Skipped when that key
+   is absent. Satisfied by --author=... on the command or `git config user.name`.
 
-3. `git commit` CRLF churn  -> "deny" if any file about to be committed has a
-   `git diff --numstat` that disagrees with `--numstat -w` (learning
-   python-roundtrip-strips-crlf-in-repo-edits: a 7-line edit became a 266-line
-   diff). Add the token [crlf-ok] anywhere in the command to bypass once.
+3. `git commit` CRLF churn  -> "deny" if any file the commit will contain has a
+   `git diff --numstat` that disagrees with `--numstat -w` (a line-ending
+   rewrite disguised as an edit). Scoped to the commit's own files. Add the
+   token [crlf-ok] anywhere in the command to bypass once.
 
-Configured in .claude/settings.json under "PreToolUse" with matcher
-"Bash|PowerShell".
+Wired by hooks/hooks.json under "PreToolUse" with matcher "Bash|PowerShell".
 """
 import json
 import os
@@ -28,7 +26,8 @@ import shlex
 import subprocess
 import sys
 
-IDENTITY_RE = re.compile(r"^(Claude-[\w.-]+|Codex|ChatGPT|Local-[\w.-]+)$")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _config import load as load_config  # noqa: E402
 
 DESTRUCTIVE = [
     (r"\bgit\s+push\b[^|;&]*\s(--force\b|-f\b|--force-with-lease\b)", "git push --force"),
@@ -163,17 +162,6 @@ def effective_cwd(cmd, cwd):
     return cwd
 
 
-def identity_applies(cwd):
-    """True when the repo at cwd is the Playground (CLAUDE_PROJECT_DIR) itself."""
-    project = os.environ.get("CLAUDE_PROJECT_DIR")
-    if not project:
-        return True
-    _, top = git(["rev-parse", "--show-toplevel"], cwd)
-    if not top:
-        return True
-    return os.path.normcase(os.path.abspath(top)) == os.path.normcase(os.path.abspath(project))
-
-
 def crlf_churn(cmd, cwd):
     """Files the commit would contain whose diff is line-ending churn.
 
@@ -214,27 +202,26 @@ def main():
     # 1. destructive -> ask
     for pat, label in DESTRUCTIVE:
         if re.search(pat, cmd):
-            out("ask", f"`{label}` rewrites history or discards work on a repo shared by "
-                       "four agents (coordination contract §2). Confirm this is intended.")
+            out("ask", f"`{label}` rewrites history or discards work in the working tree. "
+                       "Confirm this is intended.")
 
     if not re.search(r"\bgit\s+commit\b", cmd) or re.search(r"\bgit\s+commit\s+--help\b", cmd):
         sys.exit(0)
 
-    # 2. identity — only for commits INTO the Playground repo. A session run
-    # from the Playground also commits to other clones (agent-skills,
-    # sbdc-toolkit, ...) where the contract identities do not apply.
-    m = re.search(r"--author[=\s]+[\"']?([^\"'<]+?)\s*(?:<|[\"']|$)", cmd)
-    if m:
-        name = m.group(1).strip()
-    else:
-        _, name = git(["config", "user.name"], cwd)
-    if identity_applies(cwd) and not IDENTITY_RE.match(name or ""):
-        out("deny",
-            f"Commit would be authored as '{name or '(unset)'}', which is not a contract identity. "
-            "Every commit to this repo must be authored as Claude-fnxpearl / Claude-umd / "
-            "Codex / ChatGPT / Local-<model> (2026-08-15 coordination architecture §2.4). "
-            "Add e.g. --author=\"Claude-umd <bwmason@umd.edu>\" to the commit, or set "
-            "`git config user.name Claude-umd` for this repo.")
+    # 2. identity (only when configured)
+    cfg = load_config(cwd)
+    ident = cfg.get("commit_identities")
+    if ident:
+        m = re.search(r"--author[=\s]+[\"']?([^\"'<]+?)\s*(?:<|[\"']|$)", cmd)
+        if m:
+            name = m.group(1).strip()
+        else:
+            _, name = git(["config", "user.name"], cwd)
+        if not re.match(ident, name or ""):
+            out("deny",
+                f"Commit would be authored as '{name or '(unset)'}', which does not match "
+                f"commit_identities {ident!r} in .claude/guardrails.json. Add --author=\"<Name> <email>\" "
+                "to the commit or set `git config user.name` for this repo.")
 
     # 3. CRLF churn
     if "[crlf-ok]" not in cmd:
@@ -244,7 +231,7 @@ def main():
             out("deny",
                 f"Line-ending churn in files to be committed: {shown}. `git diff --numstat` and "
                 "`--numstat -w` disagree, so the diff carries CRLF<->LF rewrites, not just your edit "
-                "(learning: python-roundtrip-strips-crlf-in-repo-edits). Restore the original "
+                "(a whole-file rewrite hiding a small edit). Restore the original "
                 "line endings (rewrite in binary: data.replace(b'\\r\\n', b'\\n').replace(b'\\n', b'\\r\\n') "
                 "for CRLF files) and retry, or add [crlf-ok] to the command if the churn is intended.")
 

@@ -18,10 +18,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from _gitstate import dirty_state, load_snapshot  # noqa: E402
-
-
-def project_root():
-    return os.environ.get("CLAUDE_PROJECT_DIR") or os.getcwd()
+from _config import load as load_config, project_root  # noqa: E402
 
 
 def main():
@@ -54,12 +51,12 @@ def main():
 
     n = len(changed)
     listed = ", ".join(changed[:10]) + (f" (+{n - 10} more)" if n > 10 else "")
+    handoff = load_config(root).get("handoff_file") or "HANDOFF-LOG.md"
     reason = (
         f"Session-end protocol not complete: {n} {scope}: {listed}. "
-        "Before finishing: (1) commit the changes authored as your identity "
-        "(Claude-umd / Claude-fnxpearl / Codex / Local-<model>), "
-        "(2) prepend a dated HANDOFF-LOG.md entry describing what changed, "
-        "what's next, files touched, and any open question, then (3) push. "
+        "Before finishing: (1) commit the changes authored as your identity, "
+        f"(2) prepend a dated {handoff} entry describing what changed, what's next, "
+        "files touched, and any open question, then (3) push. "
         "If the work is intentionally left uncommitted, say so briefly and stop."
     )
     print(json.dumps({"decision": "block", "reason": reason}))

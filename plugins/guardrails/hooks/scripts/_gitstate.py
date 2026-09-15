@@ -15,7 +15,7 @@ import os
 import subprocess
 import tempfile
 
-SNAPSHOT_DIR = os.path.join(tempfile.gettempdir(), "claude-playground-hooks")
+SNAPSHOT_DIR = os.path.join(tempfile.gettempdir(), "claude-guardrails")
 
 
 def _git(args, root, stdin=None, timeout=120):

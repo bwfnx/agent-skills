@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
-"""SessionStart hook — inject the Claude Playground coordination context.
+"""SessionStart hook — inject the repo's session protocol.
 
-Fires when a Claude Code session starts or resumes in the Playground folder.
-Runs a non-destructive `git fetch`, then feeds the newest HANDOFF-LOG.md
-entries, the TASKS.md "Active now" block, and the session protocol into the
-model's context BEFORE the first prompt (via hookSpecificOutput.additionalContext).
+Runs a non-destructive `git fetch`, then feeds the newest entries of the
+handoff log and the "Active now" block of the tasks file (names from
+.claude/guardrails.json: handoff_file, tasks_file; both optional) into the
+model's context via hookSpecificOutput.additionalContext.
 
 Also snapshots the dirty working tree (path -> status + content hash) to
-%TEMP%/claude-playground-hooks/<session_id>.json so the Stop hook can nag only
-about files changed DURING this session, not the pre-existing backlog.
+<temp>/claude-guardrails/<session_id>.json so the Stop hook can nag only about
+files changed DURING this session.
 
 Never fails the session: any error degrades to a short note.
-Configured in .claude/settings.json under "SessionStart".
 """
 import json
 import os
@@ -20,10 +19,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from _gitstate import write_snapshot  # noqa: E402
-
-
-def project_root():
-    return os.environ.get("CLAUDE_PROJECT_DIR") or os.getcwd()
+from _config import load as load_config, project_root  # noqa: E402
 
 
 def run(args, cwd, timeout=30):
@@ -46,9 +42,8 @@ def git_status(root):
     up_code, _, _ = run(["git", "rev-parse", "--abbrev-ref", "@{upstream}"], root)
     if up_code != 0:
         # Don't report "0 behind" when there is nothing to be behind of.
-        return (f"git [{branch or '?'}]: NO UPSTREAM configured (local-only repo, "
-                f"{dirty} uncommitted file(s)). Commits cannot be pushed until a remote "
-                "exists — see coordination architecture §10 (D1).")
+        return (f"git [{branch or '?'}]: no upstream configured (local-only repo, "
+                f"{dirty} uncommitted file(s)). Commits cannot be pushed until a remote exists.")
     run(["git", "fetch", "--quiet"], root)  # non-destructive
     _, counts, _ = run(["git", "rev-list", "--left-right", "--count", "HEAD...@{upstream}"], root)
     ahead = behind = "?"
@@ -66,9 +61,9 @@ def git_status(root):
     return line
 
 
-def handoff_tail(root, max_entries=2, max_lines=45):
+def handoff_tail(root, name, max_entries=2, max_lines=45):
     """HANDOFF-LOG.md prepends newest entries at the TOP, so the 'tail' is the head."""
-    p = os.path.join(root, "HANDOFF-LOG.md")
+    p = os.path.join(root, name)
     if not os.path.isfile(p):
         return None
     lines = []
@@ -88,8 +83,8 @@ def handoff_tail(root, max_entries=2, max_lines=45):
     return "\n".join(lines).strip() or None
 
 
-def active_tasks(root, max_lines=12):
-    p = os.path.join(root, "TASKS.md")
+def active_tasks(root, name, max_lines=12):
+    p = os.path.join(root, name)
     if not os.path.isfile(p):
         return None
     out = []
@@ -121,20 +116,20 @@ def main():
     root = project_root()
     write_snapshot(root, session_id)
 
+    cfg = load_config(root)
     parts = [
-        "CLAUDE PLAYGROUND — session protocol (read before writing):",
+        "Session protocol (read before writing):",
         "1) pull   2) read the newest handoff + active tasks below   "
-        "3) load only the learnings namespace this task needs   "
-        "4) at session end: commit as your identity, prepend a HANDOFF-LOG.md entry, push.",
+        "3) at session end: commit as your identity, prepend a handoff entry, push.",
         "",
         "- " + git_status(root),
     ]
-    h = handoff_tail(root)
+    h = handoff_tail(root, cfg["handoff_file"])
     if h:
-        parts += ["", "Newest HANDOFF-LOG.md entries:", h]
-    t = active_tasks(root)
+        parts += ["", f"Newest {cfg['handoff_file']} entries:", h]
+    t = active_tasks(root, cfg["tasks_file"])
     if t:
-        parts += ["", "TASKS.md — Active now:", t]
+        parts += ["", f"{cfg['tasks_file']} — Active now:", t]
 
     context = "\n".join(parts)
     print(json.dumps({
