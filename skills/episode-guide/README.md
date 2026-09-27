@@ -1,6 +1,6 @@
 # Episode Guide
 
-Version: v1.1
+Version: v1.2
 
 ## Purpose
 
@@ -25,6 +25,7 @@ Tells you what to watch, what the story needs, and what you can skip in any TV s
 - An episode is only Skippable if it is both below the series average and irrelevant to the story. A bad episode the story needs stays in.
 - An "arc" flag is tracked separately from the tier, so a fan favorite can also be required viewing.
 - Thin data means an empty skip list, not a guessed one.
+- Recap clip shows are skippable; clip-show parodies with new footage are judged like any other episode.
 
 ## Example prompts
 

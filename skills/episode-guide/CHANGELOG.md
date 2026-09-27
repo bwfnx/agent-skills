@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2
+- series best must be a regular episode; retrospective and reunion specials can be fan favorites but not the top pick
+- clip shows that reuse aired footage are skippable by default
+- exception: clip-show parodies made of new material are tiered like normal episodes
+- tested on mythbusters (docuseries, calendar-year seasons)
+
 ## v1.1
 - long-series mode now branches on show type: serialized shows get an arc-only path, episodic shows (sitcoms, procedurals, docuseries) get a best-of path
 - multi-part episodes that aired as one block count as a single entry with a code range

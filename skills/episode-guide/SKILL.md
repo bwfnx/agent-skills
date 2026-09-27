@@ -24,7 +24,7 @@ Assign every listed entry exactly one tier. Do not list unremarkable "fine" epis
 
 | Tier | Meaning | Test |
 |---|---|---|
-| 👑 **Series Best** | The single best entry of the whole run | Highest combined standing across all sources. Exactly one. |
+| 👑 **Series Best** | The single best entry of the whole run | Highest combined standing across all sources. Exactly one, and it must be a regular episode (see Specials below). |
 | ⚡ **God Mode** | The show at its absolute peak | Rated well above the series average (roughly top 5–10%) AND appears on critic or major-outlet best-of lists |
 | ❤️ **Fan Favorite** | Beloved rewatch staples | Strong fan ratings/polls or cultural staying power, even if critics are lukewarm |
 | 🧵 **Core Arc** | Needed to follow the main story | Advances the central mythology, character arcs, or sets up payoffs. Not necessarily great. |
@@ -32,6 +32,10 @@ Assign every listed entry exactly one tier. Do not list unremarkable "fine" epis
 | ⏭️ **Skippable** | Safe to skip | Below the series average AND standalone with no arc impact. Must meet both. |
 
 If an entry qualifies for multiple tiers, use the highest (Series Best > God Mode > Fan Favorite > Core Arc > Skim). A skippable episode can never also be Core Arc or Skim — if anything in it matters to the story, it is not skippable, however bad it is.
+
+**Specials and clip shows.** Retrospectives, reunions, and "best of" specials often top rating lists on nostalgia alone. They can be ❤️ Fan Favorites, but never 👑 Series Best — pick that from regular episodes and mention the special in the Headline if it outranks the pick.
+
+A clip show that **reuses footage the viewer has already seen** (recaps, outtake reels, countdown specials) is ⏭️ Skippable by default, even without a below-average rating, because it adds nothing new. Exception: a clip show made of **new material** — a parody of the format, flashbacks to events that never aired ("Paradigms of Human Memory" in Community, "Clip Show" parodies) — is a real episode. Tier it on its ratings like any other.
 
 **Arc flag (separate from tier).** Tag every entry the main story needs as `arc: yes`, whatever its tier. A Fan Favorite or God Mode episode can also be arc-essential ("Tall Tales", "Death's Door"), and the tier alone would hide that. Show the flag in the table ("also needed for the arc") and use it to build the Arc-Only or Best-Of Path.
 
