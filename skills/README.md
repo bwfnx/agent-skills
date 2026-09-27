@@ -16,4 +16,6 @@ Recommended contents per skill:
 - `assets/` only if necessary
 
 ## Current canonical skills
+- `skills/episode-guide/`
 - `skills/transcript-to-action-plan-email/`
+- `skills/competitive-research-analyst/`
