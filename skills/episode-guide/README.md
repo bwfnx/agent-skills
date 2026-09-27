@@ -1,6 +1,6 @@
 # Episode Guide
 
-Version: v1.3
+Version: v1.4
 
 ## Purpose
 
@@ -11,6 +11,7 @@ Tells you what to watch, what the story needs, and what you can skip in any TV s
 - a show, podcast, or franchise title
 - optional scope: whole series, specific seasons, or "just tell me what to skip"
 - optional: watching with kids, and the child's age
+- optional: what you've already watched, so the path picks up from there
 - optional spoiler level: spoiler-light (default), spoilers fine, or zero spoilers
 
 ## Typical outputs
@@ -36,3 +37,4 @@ Tells you what to watch, what the story needs, and what you can skip in any TV s
 - "Which episodes of Serial are worth it?"
 - "Best 30 Rock episodes" (episodic, so you get a Best-Of Path)
 - "Star Trek TNG episodes to watch with my 6-year-old"
+- "Star Wars movies for my 6-year-old, he's seen IV and V"

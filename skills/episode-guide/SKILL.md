@@ -13,6 +13,7 @@ Produce a researched, spoiler-light guide that tells the user what to watch, wha
 - **Scope** (optional): whole series, specific seasons, or "just tell me what to skip."
 - **Spoiler level**: default spoiler-light (see Rules). Honor "spoilers fine" or "zero spoilers" if the user says so.
 - **Watching with kids** (optional): the child's age, or "family" with no age. Turns on the family flag and Family Path below. Default age if none given: 8.
+- **Already watched** (optional): entries the viewer has seen. Mark them "seen" in the tables, and start the Family Path or any path at the first unseen entry.
 
 Works for:
 - **TV series** — seasons and episodes
@@ -44,6 +45,8 @@ A clip show that **reuses footage the viewer has already seen** (recaps, outtake
 - 👪 **Kid pick** — fun and suitable for this age: clear stakes, not frightening, nothing the child needs a lot of context for.
 - ⚠️ **Not for this age** — frightening imagery, gore, sexual content, or heavy themes (death of a child, torture, body horror). Always show this, even on ⚡ God Mode or 👑 Series Best episodes, with a one-line reason ("body-horror ending").
 - Unmarked — fine to watch but may bore or confuse a young kid.
+
+**Show-level ratings only.** Often a parent guide rates the whole show or film series but not individual episodes. Then report the show-level age and its main concerns in a short family note at the top, leave episodes unmarked, and say plainly that episode-level calls weren't possible. Don't invent 👪 or ⚠️ tags to fill the gap. For films, each film usually has its own rating and parent review, so mark each one.
 
 Quality and suitability are separate calls: a God Mode episode can be ⚠️, and a middling episode can be a great 👪 pick. You can list extra entries purely as 👪 picks (tier them Fan Favorite or leave the tier as the ratings dictate). Base the call on parent-focused sources, not the show's overall rating.
 

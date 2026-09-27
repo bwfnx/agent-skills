@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.4
+- when parent guides rate only the whole show, report the show-level age in a family note and leave episodes unmarked instead of guessing
+- new optional input for entries already watched: marked as seen, and paths start at the first unseen entry
+- tested on mythbusters (show-level 9+ only) and the star wars films for a 6-year-old who has seen episodes iv and v
+
 ## v1.3
 - added an optional family flag for watching with kids: kid pick, not for this age, or unmarked, calibrated to the child's age
 - family flag is separate from quality tiers; god mode episodes still get a not-for-this-age warning when needed

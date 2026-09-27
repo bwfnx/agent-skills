@@ -36,7 +36,7 @@
     {
       "slug": "episode-guide",
       "display_name": "Episode Guide",
-      "version": "v1.3",
+      "version": "v1.4",
       "status": "active",
       "owner": "BW Mason",
       "canonical_path": "skills/episode-guide/",
@@ -45,7 +45,7 @@
       ],
       "packaged_zip_generated": false,
       "approved_for_sharing": false,
-      "notes": "Season-by-season best/skippable episode guide for tv, podcasts, and franchises. Arc-only or best-of path, clip-show handling, optional family flag for watching with kids. Tested on Supernatural, 30 Rock, MythBusters, Community, Star Trek TNG."
+      "notes": "Season-by-season best/skippable guide for tv, podcasts, and film franchises. Arc-only or best-of path, clip-show handling, family flag for watching with kids (per-episode or show-level), already-watched tracking. Tested on Supernatural, 30 Rock, MythBusters, Community, Star Trek TNG, Star Wars films."
     }
   ]
 }
