@@ -1,0 +1,9 @@
+version: "1"
+interface:
+  display_name: "Episode Guide"
+  short_description: "Best, essential, and skippable episodes of any series, season by season"
+  icon: "tv"
+  accent_color: "#8F621F"
+behavior:
+  tool_preferences:
+    - web

@@ -12,6 +12,7 @@ Any duplicate skill folders outside `skills/` should be treated as legacy copies
 |---|---|---:|---|---|---|
 | `transcript-to-action-plan-email` | Transcript To Action Plan Email | v1.0 | `skills/transcript-to-action-plan-email/` | Active | Converts SBDC meeting transcripts into NeoSerra-ready follow-up emails plus a follow-up menu |
 | `competitive-research-analyst` | Competitive Research Analyst | v1.0 | `skills/competitive-research-analyst/` | Draft | Web-first competitive research skill for small businesses with mandatory current open-source competitor analysis |
+| `episode-guide` | Episode Guide | v1.0 | `skills/episode-guide/` | Active | Season-by-season guide to the best, essential, and skippable episodes of any series, with an Arc-Only Path for long shows |
 
 ## Suggested metadata to maintain over time
 For each skill, keep these current:

@@ -1,7 +1,7 @@
 {
   "repo": "agent-skills",
   "canonical_root": "skills/",
-  "last_updated": "2026-03-25",
+  "last_updated": "2026-09-27",
   "skills": [
     {
       "slug": "transcript-to-action-plan-email",
@@ -32,6 +32,20 @@
       "packaged_zip_generated": false,
       "approved_for_sharing": false,
       "notes": "Canonical source added under skills/. Competitor analysis is web-first and requires current open-source research before presenting findings."
+    },
+    {
+      "slug": "episode-guide",
+      "display_name": "Episode Guide",
+      "version": "v1.0",
+      "status": "active",
+      "owner": "BW Mason",
+      "canonical_path": "skills/episode-guide/",
+      "target_workspaces": [
+        "personal"
+      ],
+      "packaged_zip_generated": false,
+      "approved_for_sharing": false,
+      "notes": "Season-by-season best/skippable episode guide for tv, podcasts, and franchises. Tested on Supernatural."
     }
   ]
 }
