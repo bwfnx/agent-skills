@@ -1,6 +1,6 @@
 # Episode Guide
 
-Version: v1.0
+Version: v1.1
 
 ## Purpose
 
@@ -17,7 +17,7 @@ Tells you what to watch, what the story needs, and what you can skip in any TV s
 - the single best episode of the series
 - a table per season in original air order, each pick tiered: Series Best, God Mode, Fan Favorite, Core Arc, Skim, or Skippable
 - a short watch guide per season
-- for long series (8+ seasons or 100+ episodes): an Arc-Only Path with episode count and hours saved
+- for long series (8+ seasons or 100+ episodes): an Arc-Only Path for serialized shows, or a Best-Of Path for episodic ones (sitcoms, procedurals, docuseries), with episode count and hours saved
 - a sources list, including any sources that were blocked
 
 ## Key rules
@@ -31,3 +31,4 @@ Tells you what to watch, what the story needs, and what you can skip in any TV s
 - "Best episodes of Supernatural, and what can I skip?"
 - "Watch guide for The X-Files, just the mythology"
 - "Which episodes of Serial are worth it?"
+- "Best 30 Rock episodes" (episodic, so you get a Best-Of Path)

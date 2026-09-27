@@ -36,7 +36,7 @@
     {
       "slug": "episode-guide",
       "display_name": "Episode Guide",
-      "version": "v1.0",
+      "version": "v1.1",
       "status": "active",
       "owner": "BW Mason",
       "canonical_path": "skills/episode-guide/",
@@ -45,7 +45,7 @@
       ],
       "packaged_zip_generated": false,
       "approved_for_sharing": false,
-      "notes": "Season-by-season best/skippable episode guide for tv, podcasts, and franchises. Tested on Supernatural."
+      "notes": "Season-by-season best/skippable episode guide for tv, podcasts, and franchises. Arc-only path for serialized shows, best-of path for episodic ones. Tested on Supernatural and 30 Rock."
     }
   ]
 }

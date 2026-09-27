@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1
+- long-series mode now branches on show type: serialized shows get an arc-only path, episodic shows (sitcoms, procedurals, docuseries) get a best-of path
+- multi-part episodes that aired as one block count as a single entry with a code range
+- added a rule for sources that disagree on season or episode numbering
+- tested on 30 rock (7 seasons, 138 episodes)
+
 ## v1.0
 - initial release: tiered season-by-season episode guide for tv, podcasts, and movie franchises
 - tiers: series best, god mode, fan favorite, core arc, skim, skippable

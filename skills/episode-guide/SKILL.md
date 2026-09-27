@@ -1,6 +1,6 @@
 ---
 name: episode-guide
-description: build a season-by-season guide to the best and most skippable episodes of any tv series, podcast, or movie franchise — god mode peaks, fan favorites, core arc episodes, skim and skippable filler, an arc-only path for long shows, and the single best episode of the series. use when asked for "best episodes of x", "what can i skip in x", "watch guide for x", or "is x worth finishing".
+description: build a season-by-season guide to the best and most skippable episodes of any tv series, podcast, or movie franchise — god mode peaks, fan favorites, core arc episodes, skim and skippable filler, an arc-only path for serialized long shows or a best-of path for episodic ones, and the single best episode of the series. use when asked for "best episodes of x", "what can i skip in x", "watch guide for x", or "is x worth finishing".
 ---
 
 # Episode Guide
@@ -33,7 +33,7 @@ Assign every listed entry exactly one tier. Do not list unremarkable "fine" epis
 
 If an entry qualifies for multiple tiers, use the highest (Series Best > God Mode > Fan Favorite > Core Arc > Skim). A skippable episode can never also be Core Arc or Skim — if anything in it matters to the story, it is not skippable, however bad it is.
 
-**Arc flag (separate from tier).** Tag every entry the main story needs as `arc: yes`, whatever its tier. A Fan Favorite or God Mode episode can also be arc-essential ("Tall Tales", "Death's Door"), and the tier alone would hide that. Show the flag in the table ("also needed for the arc") and use it to build the Arc-Only Path.
+**Arc flag (separate from tier).** Tag every entry the main story needs as `arc: yes`, whatever its tier. A Fan Favorite or God Mode episode can also be arc-essential ("Tall Tales", "Death's Door"), and the tier alone would hide that. Show the flag in the table ("also needed for the arc") and use it to build the Arc-Only or Best-Of Path.
 
 ## Research
 
@@ -60,10 +60,18 @@ Say in the Sources section which sources were blocked. If a season still has too
 
 Trigger when the series has **8+ seasons or 100+ episodes** (e.g., Supernatural, The Simpsons, Grey's Anatomy) or when the user asks for it.
 
+First, decide the show type — it changes which path you build:
+- **Serialized** (a story runs across episodes: Supernatural, Lost, Breaking Bad) → build an **Arc-Only Path**.
+- **Episodic** (each episode stands alone: sitcoms like 30 Rock, procedurals, anthologies, docuseries and reality like MythBusters) → build a **Best-Of Path** instead. An arc path for an episodic show is short, dull, and misses why people watch.
+- **Mixed** (monster-of-the-week with a spine: The X-Files, Buffy) → build the Arc-Only Path, and offer the Best-Of Path in one line.
+
+State the show type and which path you chose in the Headline.
+
 In this mode:
 - Be more aggressive about identifying ⏭️ Skippable standalones — this is the main value for long shows.
-- Add an **Arc-Only Path**: the minimum list of episodes needed to follow the story — every entry flagged `arc: yes`, plus all ⚡ God Mode and the 👑 Series Best — in release order, with a total episode count and rough runtime saved. Include 👀 Skim entries with their "what to catch" note.
-- Flag seasons that are weak overall ("Season 8 is widely considered a dip — arc-only is fine here").
+- **Arc-Only Path** (serialized/mixed): the minimum list of episodes needed to follow the story — every entry flagged `arc: yes`, plus all ⚡ God Mode and the 👑 Series Best — in release order, with a total episode count and rough runtime saved. Include 👀 Skim entries with their "what to catch" note.
+- **Best-Of Path** (episodic): 👑 Series Best + all ⚡ God Mode + all ❤️ Fan Favorites, plus any `arc: yes` entries (character milestones, finales), in release order, with a total episode count and rough runtime saved. For episodic shows the `arc` flag marks the few relationship or format milestones worth knowing about, not a plot.
+- Flag seasons that are weak overall ("Season 8 is widely considered a dip — the path is enough here").
 
 ## Output
 
@@ -81,8 +89,8 @@ One table per season, entries sorted by **original release date**:
 ### 3. Season watch guides
 Under each table, 2–4 sentences: how strong the season is overall, which episodes are non-negotiable, and what can safely be skipped. Keep it conversational.
 
-### 4. Arc-Only Path (long-series mode only)
-Numbered list in release order, plus: total episodes, episodes skipped, approximate hours saved.
+### 4. Arc-Only Path or Best-Of Path (long-series mode only)
+Whichever the show type calls for. Numbered list in release order, plus: total episodes, episodes skipped, approximate hours saved.
 
 ### 5. Sources
 Short list of links used.
@@ -91,7 +99,9 @@ Short list of links used.
 
 - **Spoiler-light by default**: describe the hook, tone, or stakes — never the twist, death, reveal, or ending. "A case goes sideways in a way that changes the show" is fine; "X dies" is not. Skip the one-liner entirely for episodes whose premise itself is a spoiler.
 - **Release order only**: sort by original air/release date, not streaming or production order. Note it if the two differ meaningfully.
+- **Multi-part episodes count once**: a two-parter or double-length episode that aired as one block ("Hogcock! / Last Lunch", a one-hour finale) is a single entry with a code range (S7E12–13) and the first air date. Two parts that aired on different nights stay separate entries, each tiered on its own.
+- **Numbering conflicts**: when sources disagree on season or episode numbers (common for docuseries, reality, and anything re-cut for streaming), pick one source — the network's or Wikipedia's list — say which in the Headline, and use it consistently. Prefer episode titles over numbers in one-liners so the reader can match either scheme.
 - **No filler padding**: if a season has no God Mode episodes, say so instead of stretching the tier.
 - **Be honest about thin data**: for niche podcasts or obscure shows with few ratings, say the rankings rest on limited sources.
 - **Keep one-liners to one line.**
-- If the output is long (big series), offer the full guide as a document the user can keep, and give the headline + Arc-Only Path in chat.
+- If the output is long (big series), offer the full guide as a document the user can keep, and give the headline + the path in chat.
