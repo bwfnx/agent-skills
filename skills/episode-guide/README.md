@@ -1,6 +1,6 @@
 # Episode Guide
 
-Version: v1.2
+Version: v1.3
 
 ## Purpose
 
@@ -10,6 +10,7 @@ Tells you what to watch, what the story needs, and what you can skip in any TV s
 
 - a show, podcast, or franchise title
 - optional scope: whole series, specific seasons, or "just tell me what to skip"
+- optional: watching with kids, and the child's age
 - optional spoiler level: spoiler-light (default), spoilers fine, or zero spoilers
 
 ## Typical outputs
@@ -18,6 +19,7 @@ Tells you what to watch, what the story needs, and what you can skip in any TV s
 - a table per season in original air order, each pick tiered: Series Best, God Mode, Fan Favorite, Core Arc, Skim, or Skippable
 - a short watch guide per season
 - for long series (8+ seasons or 100+ episodes): an Arc-Only Path for serialized shows, or a Best-Of Path for episodic ones (sitcoms, procedurals, docuseries), with episode count and hours saved
+- when watching with kids: a Family Path of kid picks plus a "hold off until they're older" list
 - a sources list, including any sources that were blocked
 
 ## Key rules
@@ -33,3 +35,4 @@ Tells you what to watch, what the story needs, and what you can skip in any TV s
 - "Watch guide for The X-Files, just the mythology"
 - "Which episodes of Serial are worth it?"
 - "Best 30 Rock episodes" (episodic, so you get a Best-Of Path)
+- "Star Trek TNG episodes to watch with my 6-year-old"

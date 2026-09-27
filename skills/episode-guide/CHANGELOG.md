@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.3
+- added an optional family flag for watching with kids: kid pick, not for this age, or unmarked, calibrated to the child's age
+- family flag is separate from quality tiers; god mode episodes still get a not-for-this-age warning when needed
+- added a family path output and parent-guide sources (common sense media, imdb parents guide)
+- tested on star trek: the next generation for a 6-year-old
+
 ## v1.2
 - series best must be a regular episode; retrospective and reunion specials can be fan favorites but not the top pick
 - clip shows that reuse aired footage are skippable by default

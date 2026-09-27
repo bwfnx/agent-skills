@@ -1,6 +1,6 @@
 ---
 name: episode-guide
-description: build a season-by-season guide to the best and most skippable episodes of any tv series, podcast, or movie franchise — god mode peaks, fan favorites, core arc episodes, skim and skippable filler, an arc-only path for serialized long shows or a best-of path for episodic ones, and the single best episode of the series. use when asked for "best episodes of x", "what can i skip in x", "watch guide for x", or "is x worth finishing".
+description: build a season-by-season guide to the best and most skippable episodes of any tv series, podcast, or movie franchise — god mode peaks, fan favorites, core arc episodes, skim and skippable filler, an arc-only path for serialized long shows or a best-of path for episodic ones, and the single best episode of the series. use when asked for "best episodes of x", "episodes to watch with my kids", "what can i skip in x", "watch guide for x", or "is x worth finishing".
 ---
 
 # Episode Guide
@@ -12,6 +12,7 @@ Produce a researched, spoiler-light guide that tells the user what to watch, wha
 - **Title** (required). If ambiguous (remakes, reboots, same-name shows), ask which one before researching.
 - **Scope** (optional): whole series, specific seasons, or "just tell me what to skip."
 - **Spoiler level**: default spoiler-light (see Rules). Honor "spoilers fine" or "zero spoilers" if the user says so.
+- **Watching with kids** (optional): the child's age, or "family" with no age. Turns on the family flag and Family Path below. Default age if none given: 8.
 
 Works for:
 - **TV series** — seasons and episodes
@@ -39,6 +40,13 @@ A clip show that **reuses footage the viewer has already seen** (recaps, outtake
 
 **Arc flag (separate from tier).** Tag every entry the main story needs as `arc: yes`, whatever its tier. A Fan Favorite or God Mode episode can also be arc-essential ("Tall Tales", "Death's Door"), and the tier alone would hide that. Show the flag in the table ("also needed for the arc") and use it to build the Arc-Only or Best-Of Path.
 
+**Family flag (separate from tier, only when watching with kids).** Mark each listed entry for the child's age:
+- 👪 **Kid pick** — fun and suitable for this age: clear stakes, not frightening, nothing the child needs a lot of context for.
+- ⚠️ **Not for this age** — frightening imagery, gore, sexual content, or heavy themes (death of a child, torture, body horror). Always show this, even on ⚡ God Mode or 👑 Series Best episodes, with a one-line reason ("body-horror ending").
+- Unmarked — fine to watch but may bore or confuse a young kid.
+
+Quality and suitability are separate calls: a God Mode episode can be ⚠️, and a middling episode can be a great 👪 pick. You can list extra entries purely as 👪 picks (tier them Fan Favorite or leave the tier as the ratings dictate). Base the call on parent-focused sources, not the show's overall rating.
+
 ## Research
 
 Blend sources and cite them. Search each separately rather than in one combined query.
@@ -47,6 +55,7 @@ Blend sources and cite them. Search each separately rather than in one combined 
 2. **Critics**: best-episode lists from major outlets (Vulture, The A.V. Club, Rolling Stone, IGN, Collider, etc.).
 3. **Fans**: Reddit threads and polls ("best episode of X", "what can I skip in X", "filler episodes X"), fan wikis for arc/mythology tags.
 4. **Arc mapping**: fan wikis or episode guides that label mythology vs. standalone ("monster of the week") episodes.
+5. **Parent guides** (family flag only): Common Sense Media, IMDb Parents Guide, and "best episodes for kids" lists. Never mark ⚠️ or 👪 on a guess; if no parent source covers an episode, leave it unmarked.
 
 Verify air dates and episode numbers against a reliable episode list (Wikipedia episode list or IMDb). Never guess an air date — if unverified, say so.
 
@@ -96,7 +105,10 @@ Under each table, 2–4 sentences: how strong the season is overall, which episo
 ### 4. Arc-Only Path or Best-Of Path (long-series mode only)
 Whichever the show type calls for. Numbered list in release order, plus: total episodes, episodes skipped, approximate hours saved.
 
-### 5. Sources
+### 5. Family Path (only when watching with kids)
+The 👪 Kid picks in release order, plus a short "Hold off until they're older" list of every ⚠️ entry with its one-line reason. State the age it was built for.
+
+### 6. Sources
 Short list of links used.
 
 ## Rules
