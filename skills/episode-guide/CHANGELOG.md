@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.5
+- added a lessons-from-testing section: pull tables verbatim, reread notes against the data before publishing, test rule changes on a deliberately different show
+
 ## v1.4
 - when parent guides rate only the whole show, report the show-level age in a family note and leave episodes unmarked instead of guessing
 - new optional input for entries already watched: marked as seen, and paths start at the first unseen entry

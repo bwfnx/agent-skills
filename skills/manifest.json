@@ -36,7 +36,7 @@
     {
       "slug": "episode-guide",
       "display_name": "Episode Guide",
-      "version": "v1.4",
+      "version": "v1.5",
       "status": "active",
       "owner": "BW Mason",
       "canonical_path": "skills/episode-guide/",

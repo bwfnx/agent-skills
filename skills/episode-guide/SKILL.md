@@ -124,3 +124,9 @@ Short list of links used.
 - **Be honest about thin data**: for niche podcasts or obscure shows with few ratings, say the rankings rest on limited sources.
 - **Keep one-liners to one line.**
 - If the output is long (big series), offer the full guide as a document the user can keep, and give the headline + the path in chat.
+
+## Lessons from testing
+
+- **Pull tables verbatim.** When extracting episode lists from a web page, ask for the table rows copied as-is, one year or season block at a time. Spot-lookup summaries have mixed up rows and dates.
+- **Reread notes against the data before publishing.** Explanatory notes ("two episodes stay in because...") drift from the table as you edit. Check every sentence that describes the data against the final entries.
+- **Test changes on a deliberately different case.** Each rule in this skill came from a show that broke the previous version: sitcom arcs (30 Rock), clip shows (MythBusters, Community), family ratings (TNG, MythBusters), and films (Star Wars). Before changing a rule, run it on a show unlike the last one.
