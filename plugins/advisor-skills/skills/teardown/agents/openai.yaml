@@ -1,0 +1,4 @@
+interface:
+  display_name: "Teardown"
+  short_description: "ESIA teardown before improving a process"
+  default_prompt: "Use $teardown to tear down this workflow before we improve it."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Verification Audit"
+  short_description: "Verify a build does what was claimed"
+  default_prompt: "Use $build-verification-audit to verify this build before calling it done."

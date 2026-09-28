@@ -1,0 +1,4 @@
+interface:
+  display_name: "Funding Match Packet"
+  short_description: "Match a client to funding opportunities"
+  default_prompt: "Use $sbdc-funding-match-packet to build a funding match packet for this client."

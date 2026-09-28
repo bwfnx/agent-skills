@@ -1,0 +1,2 @@
+# Store and check out every text file with LF; hook scripts and skills must not drift to CRLF.
+* text=auto eol=lf

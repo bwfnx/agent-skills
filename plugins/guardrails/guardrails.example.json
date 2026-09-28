@@ -1,0 +1,9 @@
+{
+  "commit_identities": "^(Claude-[\\w.-]+|Codex|ChatGPT|Local-[\\w.-]+)$",
+  "add_only_paths": ["raw"],
+  "never_edit_paths": ["memory/learnings"],
+  "never_read_whole": ["learnings*.jsonl", "memory/learnings/_views/*.jsonl"],
+  "wiki_dirs": ["wiki"],
+  "handoff_file": "HANDOFF-LOG.md",
+  "tasks_file": "TASKS.md"
+}

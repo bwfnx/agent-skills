@@ -1,0 +1,4 @@
+interface:
+  display_name: "Email Follow-Ups"
+  short_description: "Draft the replies you're avoiding"
+  default_prompt: "Use $email-followups to find and draft the replies I owe."

@@ -1,0 +1,7 @@
+{
+  "name": "guardrails",
+  "version": "1.0.0",
+  "description": "Hooks that keep a shared git repo safe: destructive git asks first, CRLF-churn commits are refused, session start/end protocol, protected paths, big-file read guard.",
+  "author": { "name": "Brandon Mason" },
+  "license": "MIT"
+}

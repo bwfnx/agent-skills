@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SBDC Funding Match Packet — Week of YYYY-MM-DD (DRAFT)</title>
+<style>
+/* PASTE THE ENTIRE CONTENTS OF references/design-system.css HERE */
+</style>
+</head>
+<body>
+
+  <!-- Accessibility toolbar: ids must be exactly these -->
+  <div class="toolbar">
+    <span>Text size</span>
+    <button id="tminus">A−</button>
+    <button id="treset">Reset</button>
+    <button id="tplus">A＋</button>
+    <button id="hc">◐ High contrast</button>
+    <span class="draftflag">Draft · nothing sent</span>
+  </div>
+
+  <header>
+    <p>{{ORG}} · [CENTER]</p>
+    <p>Weekly Funding Opportunity Match Packet</p>
+    <h1>Funding Matches, Week of [Month DD, YYYY]</h1>
+    <p>Prepared for [ADVISOR]. Prepared [date] · Opportunity window [range] ·
+       Client window last 90 days · Status: Draft only, review before acting.</p>
+  </header>
+
+  <!-- 1. EXECUTIVE SNAPSHOT: count tiles + one "start here" hero + near deadlines.
+       Give each near-deadline row a live countdown chip: -->
+  <section id="snapshot">
+    <div class="deadrow" data-deadline="2026-08-21">
+      [Opportunity name] · Local · [Contact name]
+      <span class="cd"></span>
+    </div>
+  </section>
+
+  <!-- 2. NEW opportunities  ·  3. CARRY-FORWARD opportunities
+       One card each: name, funder, description, deadline, award, eligibility,
+       source (sender + date). Home-geo & state first. Use data-deadline on any
+       card you want a live countdown chip on. -->
+  <section id="new"><!-- new cards --></section>
+  <section id="carry"><!-- carry-forward cards --></section>
+
+  <!-- 4. CLIENTS reviewed: full profiles; intake-only behind <details> -->
+  <section id="clients"><!-- client cards --></section>
+
+  <!-- 5. MATCH TABLE -->
+  <section id="matches">
+    <div class="controls">
+      <button class="chip active" data-geo="all">All</button>
+      <button class="chip" data-geo="local">Local</button>
+      <button class="chip" data-geo="state">State</button>
+      <button class="chip" data-geo="federal">Federal / National</button>
+      <label><input type="checkbox" id="condOnly"> Conditional only</label>
+      <button id="sortToggle">Sort: highest score</button>
+      <span id="matchCount"></span>
+    </div>
+    <table class="matchtable">
+      <thead><tr><th>Client</th><th>Opportunity</th><th>Geo</th><th>Score</th><th>Read</th><th>Why / what's open</th></tr></thead>
+      <tbody>
+        <tr data-score="88" data-geo="local" data-read="strong">
+          <td>Client A</td><td>Opportunity</td><td>Local</td><td>88</td><td>Strong</td>
+          <td>Why it fits / what's still open.</td>
+        </tr>
+        <tr data-score="80" data-geo="state" data-read="conditional">
+          <td>Client B</td><td>Opportunity</td><td>State</td><td>80</td><td>Conditional</td>
+          <td>Confirm [not found - confirm] items.</td>
+        </tr>
+      </tbody>
+    </table>
+    <details><summary>Show the rest of the scored matches</summary>
+      <table class="matchtable"><tbody>
+        <tr data-score="57" data-geo="local" data-read="developmental">
+          <td>Client C</td><td>Opportunity</td><td>Local</td><td>57</td><td>Developmental</td>
+          <td>Groundwork first.</td>
+        </tr>
+      </tbody></table>
+    </details>
+  </section>
+
+  <!-- 6. REACH-OUT CHECKLIST -->
+  <section id="checklist">
+    <ul id="reachList">
+      <li role="checkbox" aria-checked="false" tabindex="0">Today — Client A: … Draft ready.</li>
+      <li role="checkbox" aria-checked="false" tabindex="0">This week — Client B: … Draft ready.</li>
+    </ul>
+    <span id="checkProg"></span>
+  </section>
+
+  <!-- 7. OUTREACH DRAFTS (advisor voice, "Draft · not sent")  ·  8. INTERNAL NOTES -->
+  <section id="outreach"><!-- drafts --></section>
+  <section id="notes"><!-- advisor-only notes --></section>
+
+<script>
+/* PASTE THE ENTIRE CONTENTS OF references/interactivity.js HERE */
+</script>
+</body>
+</html>
