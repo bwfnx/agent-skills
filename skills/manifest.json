@@ -1,7 +1,7 @@
 {
   "repo": "agent-skills",
   "canonical_root": "skills/",
-  "last_updated": "2026-09-27",
+  "last_updated": "2026-09-28",
   "skills": [
     {
       "slug": "transcript-to-action-plan-email",
@@ -46,6 +46,20 @@
       "packaged_zip_generated": false,
       "approved_for_sharing": false,
       "notes": "Season-by-season best/skippable guide for tv, podcasts, and film franchises. Arc-only or best-of path, clip-show handling, family flag for watching with kids (per-episode or show-level), already-watched tracking. Tested on Supernatural, 30 Rock, MythBusters, Community, Star Trek TNG, Star Wars films."
+    },
+    {
+      "slug": "sbdc-workshops",
+      "display_name": "SBDC Workshops",
+      "version": "v1.0",
+      "status": "active",
+      "owner": "BW Mason",
+      "canonical_path": "skills/sbdc-workshops/",
+      "target_workspaces": [
+        "personal"
+      ],
+      "packaged_zip_generated": false,
+      "approved_for_sharing": false,
+      "notes": "Rebuilds an SBDC class as a Maryland SBDC reveal deck, QR worksheet Google Form, and on-submit follow-up email. Tested on GovCon Session 1 (Sept 28, 2026)."
     }
   ]
 }
