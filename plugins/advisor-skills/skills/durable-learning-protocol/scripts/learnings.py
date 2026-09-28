@@ -7,7 +7,7 @@ One learning per file. Namespaces:  global, fnx-pearl, sbdc, northfork, personal
 This replaces the single durable-learnings.jsonl so multiple AI instances can
 write at once without ever touching the same file (no locks, no Drive conflicts).
 
-Run it with `py learnings.py ...` on Windows (shednest) or `python3 learnings.py ...`.
+Run it with `py learnings.py ...` on Windows or `python3 learnings.py ...`.
 
 Commands
 --------
