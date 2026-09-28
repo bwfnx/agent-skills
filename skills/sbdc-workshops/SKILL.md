@@ -50,7 +50,7 @@ Confirm the date and Zoom link on the UMD calendar before trusting this table. H
    Copy-Item $tmp ".\Session-N-<Title>-slides.pdf"
    ```
    Check page count = slide count and render 2 pages with PyMuPDF (`fitz`) to confirm every reveal step prints. **BRANDON** uploads it to Drive and pastes the link -> `EMAIL.deckFileId`. Once a real submission exists, run `sendLatestToMe` so Brandon sees the exact attendee email.
-7. **Run sheet.** Adapt `assets/run-sheet-example.html` (dates, Zoom link from the calendar event, run of show with checkpoint rows shaded, chat message with the live link, handout path, next session) and publish it as a private artifact.
+7. **Run sheet.** Adapt `assets/run-sheet-example.html` (dates, Zoom link from the calendar event, run of show with checkpoint rows shaded, chat message with the live link, handout path, next session) and publish it as a private artifact. Apply every rule in "Delivery rules" below; for Session 2 onward, also read the previous session's Zoom transcript + chat and its responses sheet, and add a "Last session's leftovers" block (unanswered chat questions, promised follow-ups) as a 4-minute row right after the welcome.
 8. **Close out.** Commit the class `build.py` and `.gs` copies (explicit paths only), prepend the HANDOFF-LOG entry via `handoff_prepend.py`, push.
 
 ## Verification (do all of it; it is what "same criteria" means)
@@ -67,3 +67,14 @@ Confirm the date and Zoom link on the UMD calendar before trusting this table. H
 - Reading another project's source (e.g. the VOSBTC `Code.gs`) through `javascript_tool` is blocked by the safety classifier. Do not try to route around it; these templates replace it.
 - The Make a copy dialog ignores a typed name and Drive renames through the browser tools fail; the respondent-facing title comes from `CLASS.title`, so only Brandon's Drive list shows "Copy of ...". Tell him to rename it.
 - Do not push binaries into Drive by base64 through tool calls (transcription errors); Brandon drags files in and pastes links.
+
+## Delivery rules (from the Session 1 audit, 2026-09-28)
+Session 1 ran 15 minutes over. Both checkpoints were skipped, the chat link landed 19 minutes in, and only 1 of 3 worksheets came back complete. Bake these into every deck and run sheet:
+- **Link in chat at minute 0.** The run sheet's 20-minutes-before list ends with "At 10:00, paste the chat message yourself, before you say hello."
+- **"Don't hit Submit until the last slide"** goes in the chat message, the slide 1 speaker note, and every checkpoint note. The follow-up email fires on submit, so an early submit mails the attendee a near-empty worksheet.
+- **Checkpoints are the last thing cut.** The run sheet's "behind?" note names the content slides to drop, and says to pause the full 2-3 minutes at each checkpoint.
+- **Hard stop 5 minutes before the end.** The run sheet carries "At :20 go straight to takeaways and Submit."
+- **Leftovers row:** Session 2 onward opens with 4 minutes on the previous session's unanswered chat questions (see step 7).
+- **Term check:** it is a *compliance* matrix, not a "capability matrix."
+- **Fact-check the speaker notes** for thresholds and program rules before the build, and put the checked number in the note. Session 1 misstated on air: the EDWOSB net-worth cap ($850K; $6.5M is the assets cap), who certifies Maryland MBEs (MDOT OMBE), the Maryland MBE goal (29%), and the OSDBU name.
+- **After class:** run the audit. Inputs are the Zoom `.transcript.vtt` + chat `.txt` from Downloads, the responses sheet, and the deck. Output is `outputs/<class>/audit-session-N.md`: plan vs actual, form signals, open loops owed, facts to fix, and changes for the next session.
