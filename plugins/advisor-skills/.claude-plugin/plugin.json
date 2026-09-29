@@ -1,7 +1,7 @@
 {
   "name": "advisor-skills",
-  "version": "1.0.0",
-  "description": "Advisory and workflow skills: proposal review, funding match, wiki interview, teardown, verification audit, durable learning, AI analyst, transcript pipeline, chief of staff, email follow-ups.",
+  "version": "1.1.0",
+  "description": "Advisory and workflow skills: proposal review, funding match, wiki interview, teardown, verification audit, AI analyst, transcript pipeline, chief of staff, email follow-ups.",
   "author": { "name": "Brandon Mason" },
   "license": "MIT"
 }

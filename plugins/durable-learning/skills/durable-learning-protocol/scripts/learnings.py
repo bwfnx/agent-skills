@@ -3,7 +3,8 @@
 learnings.py — helper for the sharded Durable Learning store.
 
 The store lives at:  memory/learnings/<namespace>/<date>-<key>.json
-One learning per file. Namespaces:  global, fnx-pearl, sbdc, northfork, personal.
+One learning per file. A namespace is just a folder: any lowercase-hyphenated name
+(global, work, personal, client-acme, ...). `add` creates it on first use.
 This replaces the single durable-learnings.jsonl so multiple AI instances can
 write at once without ever touching the same file (no locks, no Drive conflicts).
 
@@ -17,17 +18,18 @@ Commands
                          --skill NAME, --full KEY..., --all to include non-active).
   compile [--namespace N]  Rebuild read-only flat views under memory/learnings/_views/.
   prune                  List superseded / deprecated / expired entries to review (never deletes).
+  retire KEY [--by NEW]  Mark an entry superseded (or --status deprecated|rejected). Never deletes.
 
 Add example
 -----------
-  py learnings.py add --namespace sbdc --key crm-bcc-postbox \
-     --insight "{{CRM}} logs the session only if the follow-up email BCCs the postbox." \
+  py learnings.py add --namespace work --key crm-bcc-postbox \
+     --insight "The CRM logs a meeting only if the follow-up email BCCs its postbox address." \
      --type pitfall --confidence 9 --usefulness 9 --source user-stated \
-     --evidence "{{USER}} confirmed 2026-08-15."
+     --evidence "User confirmed after two follow-ups went unlogged."
 """
 import argparse, json, os, re, sys, datetime, subprocess
 
-NAMESPACES = ["global", "fnx-pearl", "sbdc", "northfork", "personal"]
+# ponytail: namespaces are folders, not a fixed list; _views and other _-prefixed dirs are skipped.
 
 
 def _workspace_root():
@@ -52,10 +54,23 @@ def slug(text, maxlen=60):
     return (s[:maxlen].rstrip("-")) or "untitled"
 
 
+def namespace_arg(text):
+    """argparse type: a lowercase-hyphenated folder name."""
+    ns = slug(text, 40)
+    if ns != str(text).strip() or ns == "untitled":
+        raise argparse.ArgumentTypeError(f"namespace must be lowercase-hyphenated, e.g. {ns!r}")
+    return ns
+
+
+def namespaces():
+    if not os.path.isdir(ROOT):
+        return []
+    return sorted(n for n in os.listdir(ROOT)
+                  if not n.startswith(("_", ".")) and os.path.isdir(os.path.join(ROOT, n)))
+
+
 def ns_dir(ns):
-    if ns not in NAMESPACES:
-        ns = "global"
-    d = os.path.join(ROOT, ns)
+    d = os.path.join(ROOT, slug(ns or "global", 40))
     os.makedirs(d, exist_ok=True)
     return d
 
@@ -79,7 +94,7 @@ def write_entry(obj, force=False):
 
 
 def iter_entries(namespace=None):
-    targets = [namespace] if namespace else NAMESPACES
+    targets = [namespace] if namespace else namespaces()
     for ns in targets:
         d = os.path.join(ROOT, ns)
         if not os.path.isdir(d):
@@ -162,6 +177,21 @@ def cmd_list(args):
     print(f"\n{len(rows)} learning(s).")
 
 
+def cmd_retire(args):
+    # Status change only; the file stays for history. Store is script-owned, so this is the way.
+    hits = [(p, o) for _ns, p, o in iter_entries(args.namespace) if o.get("key") == args.key]
+    if not hits:
+        sys.exit(f"no learning with key {args.key!r}")
+    for p, o in hits:
+        o["status"] = args.status
+        if args.by:
+            o["superseded_by"] = args.by
+        with open(p, "w", encoding="utf-8") as f:
+            json.dump(o, f, indent=2, ensure_ascii=False)
+            f.write("\n")
+        print(f"{args.status}: {p}")
+
+
 def cmd_compile(args):
     views = os.path.join(ROOT, "_views")
     os.makedirs(views, exist_ok=True)
@@ -199,7 +229,7 @@ def main():
     m = sub.add_parser("migrate"); m.add_argument("file"); m.add_argument("--force", action="store_true"); m.set_defaults(func=cmd_migrate)
 
     a = sub.add_parser("add")
-    a.add_argument("--namespace", required=True, choices=NAMESPACES)
+    a.add_argument("--namespace", required=True, type=namespace_arg)
     a.add_argument("--key", required=True)
     a.add_argument("--insight", required=True)
     a.add_argument("--type", default="operational")
@@ -214,14 +244,19 @@ def main():
     a.add_argument("--force", action="store_true")
     a.set_defaults(func=cmd_add)
 
-    l = sub.add_parser("list"); l.add_argument("--namespace", choices=NAMESPACES)
+    l = sub.add_parser("list"); l.add_argument("--namespace", type=namespace_arg)
     l.add_argument("--grep", help="full rows whose JSON contains this term (case-insensitive)")
     l.add_argument("--skill", help="full rows for one task/skill name")
     l.add_argument("--full", nargs="+", metavar="KEY", help="full rows by key")
     l.add_argument("--all", action="store_true", help="include superseded/deprecated/rejected")
     l.set_defaults(func=cmd_list)
-    c = sub.add_parser("compile"); c.add_argument("--namespace", choices=NAMESPACES); c.set_defaults(func=cmd_compile)
-    p = sub.add_parser("prune"); p.add_argument("--namespace", choices=NAMESPACES); p.set_defaults(func=cmd_prune)
+    c = sub.add_parser("compile"); c.add_argument("--namespace", type=namespace_arg); c.set_defaults(func=cmd_compile)
+    p = sub.add_parser("prune"); p.add_argument("--namespace", type=namespace_arg); p.set_defaults(func=cmd_prune)
+    r = sub.add_parser("retire", help="mark a learning superseded/deprecated/rejected (never deletes)")
+    r.add_argument("key"); r.add_argument("--namespace", type=namespace_arg)
+    r.add_argument("--status", default="superseded", choices=["superseded", "deprecated", "rejected"])
+    r.add_argument("--by", metavar="NEW_KEY", help="key of the learning that replaces it")
+    r.set_defaults(func=cmd_retire)
 
     args = ap.parse_args()
     args.func(args)

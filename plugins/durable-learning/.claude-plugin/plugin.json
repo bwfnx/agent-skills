@@ -1,0 +1,7 @@
+{
+  "name": "durable-learning",
+  "version": "1.0.0",
+  "description": "Long-term memory your agents actually use: scored, namespaced learnings (one file each, safe for parallel agents), loaded at every session start, and hooks that keep the store script-owned.",
+  "author": { "name": "Brandon Mason" },
+  "license": "MIT"
+}
