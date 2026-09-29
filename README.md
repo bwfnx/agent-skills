@@ -36,7 +36,7 @@ Durable learnings: 4 active in memory/learnings/ (client-harbor-bakery, global, 
 Known pitfalls (mistakes already made once): crm-bcc-postbox, invoice-export-utf8
 ```
 
-Namespaces per context, lifecycle and review dates, `retire --by` instead of deleting, and a comparison with a plain notes file: [plugins/durable-learning](plugins/durable-learning/README.md).
+Namespaces per context, lifecycle and review dates, `retire --by` instead of deleting, and a comparison with a plain notes file: [plugins/durable-learning](plugins/durable-learning/README.md). New to plugins? The [plain-language guide](https://bwfnx.github.io/agent-skills/guides/durable-learning.html) walks through setup and what to say.
 
 ## Plugins
 

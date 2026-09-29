@@ -1,0 +1,88 @@
+{
+  "slug": "durable-learning",
+  "title": "Durable Learning",
+  "tagline": "Your AI agents stop repeating the same mistakes: they keep what they learn, score it before saving, and read it back every session.",
+  "type": "conversation",
+  "type_blurb": "You ask for it at the end of real work, and it hands back what is worth remembering. In Claude Code the plugin also does two things on its own: it shows every new session what has been learned so far, and it stops anyone from editing that memory by hand.",
+  "plugin": {
+    "name": "durable-learning",
+    "label": "durable-learning",
+    "install_code": [
+      "claude plugin marketplace add bwfnx/agent-skills",
+      "claude plugin install durable-learning@bwfnx"
+    ]
+  },
+  "version": " · v1.0",
+  "updated": "2026-09-29",
+  "source": "plugins/durable-learning/skills/durable-learning-protocol/SKILL.md",
+  "summary": [
+    "<b>Long-term memory for your agents, with a bar to clear.</b> At the end of a task it looks for what would save you time, prevent a repeat mistake, or preserve something you said you prefer. Each candidate is scored 1&ndash;10 for <b>confidence</b> (is it true?) and <b>usefulness</b> (will it matter again?). It saves only what scores 8 or higher on both, and only if you have said it may save on its own. Everything else is proposed for you to approve.",
+    "<b>Kept apart by context.</b> Each learning lives in a namespace &mdash; one for rules that apply everywhere, and one per context such as work, personal, or a single client &mdash; so one client's rules never leak into another's.",
+    "<b>Built to last.</b> Every learning records where it came from (you said it, the agent saw it, or the agent inferred it), whether it is stable or should be reviewed by a date, and what replaced it when you change your mind. Old entries are retired, not deleted, so the history stays.",
+    "<b>Read back automatically.</b> In Claude Code, every new session opens with a short note: how many learnings exist, which contexts they cover, and the pitfalls already hit once. One file per learning means several agents can save at the same time without overwriting each other."
+  ],
+  "never": [
+    "Never saves one-off facts, temporary statuses, generic advice, secrets, account numbers, sensitive client details, or financial specifics unless you explicitly ask it to.",
+    "Never saves on its own unless you have authorized it and both scores are 8 or higher; otherwise it proposes the learning and waits for you.",
+    "Never deletes a learning. Replaced, outdated, and rejected entries are marked as such and kept for the record.",
+    "Never lets an agent hand-edit the memory or dump it whole; it is written only through its own command (Claude Code, enforced by the plugin).",
+    "It is memory kept in files, not model training. Nothing leaves your project."
+  ],
+  "have_ready": [
+    "A task that just finished &mdash; the more real the work, the better the learnings.",
+    "Your answer to one question: may it save on its own when a learning scores 8 or higher on both, or should it always propose first?",
+    "Python 3 on your computer (Claude Code only; the automatic parts use it)."
+  ],
+  "setup": {
+    "steps": [
+      "<b>Claude app or Cowork:</b> add <code>bwfnx/agent-skills</code> under Settings &rarr; Plugins, or zip the skill's folder and upload it wherever your app accepts skills. The skill works there; the automatic session-start note and the memory protection run in Claude Code only."
+    ],
+    "first_say": "Save the durable learnings from this.",
+    "note": "Nothing to configure. The first save creates the memory in your project; from the next session on it is read back automatically. To let it save without asking, tell it once: &ldquo;You may save non-sensitive durable learnings automatically when confidence and usefulness are both 8 or higher.&rdquo;"
+  },
+  "use": {
+    "say": [
+      "Save the durable learnings from this.",
+      "Capture the durable learnings from this run.",
+      "Propose durable learnings — don't save yet.",
+      "Review the durable learnings for this project.",
+      "Audit the learnings for duplicates and anything stale.",
+      "Prune the durable learnings."
+    ],
+    "returns": [
+      "Usually two to five learnings, each one clear sentence with its context, kind (a preference, a pattern, a pitfall, a tool, an operational detail, or a finding to recheck), both scores, where it came from, and why it is worth keeping.",
+      "Saved learnings are confirmed; anything not saved comes back in a <b>Learnings To Save</b> section for you to approve.",
+      "If nothing is worth keeping, it says so plainly instead of padding the list.",
+      "A prune lists what is outdated, replaced, or past its review date &mdash; and deletes nothing."
+    ],
+    "then": [
+      "Approve or reject the proposed learnings. Approved ones are saved; rejected ones can be kept on record as rejected.",
+      "When a rule changes, ask for the new one to be saved and the old one retired in its favor.",
+      "Start your next session as usual; the note at the top shows what it already knows."
+    ],
+    "tips": [
+      "Say it at the end of anything that took real effort or went wrong once. Pitfalls are the most valuable entries: a mistake made once and never again.",
+      "Keep one namespace per context you'd never want mixed, such as each client.",
+      "Commit the memory with the rest of your project. Each learning is a small plain-text file, so your version history doubles as an audit trail.",
+      "If a saved learning contradicts what the agent was about to do, the learning wins &mdash; that is the point."
+    ]
+  },
+  "faq": [
+    {
+      "q": "How is this different from a notes file the agent appends to?",
+      "a": "A notes file keeps everything, never retires anything, and breaks when two agents write at once. This scores before saving, separates contexts, dates what goes stale, retires instead of deleting, gives each learning its own file, and is read back at every session start."
+    },
+    {
+      "q": "Does it work outside Claude?",
+      "a": "Yes. The skill is plain instructions, so ChatGPT, Codex, and the Claude app can all run it. The automatic session-start note and the protection against hand edits are Claude Code features."
+    },
+    {
+      "q": "Where is my memory stored?",
+      "a": "In your own project, as one small text file per learning, grouped by namespace. Nothing is sent anywhere."
+    },
+    {
+      "q": "It did something odd. Who do I ask?",
+      "a": "Open an issue on the <a href=\"https://github.com/bwfnx/agent-skills/issues\" target=\"_blank\" rel=\"noopener\">GitHub repository</a> with what you said and what came back."
+    }
+  ]
+}

@@ -23,6 +23,8 @@ And one learning, as the agent pulls it with `list --grep crm` (two empty fields
  "status": "active", "lifecycle": "stable", "review_after": null, "saved": "2026-09-29"}
 ```
 
+New to plugins? Read the [plain-language guide](https://bwfnx.github.io/agent-skills/guides/durable-learning.html) first.
+
 ## Install
 
 ```bash
