@@ -50,10 +50,10 @@
     {
       "slug": "sbdc-workshops",
       "display_name": "SBDC Workshops",
-      "version": "v1.0",
-      "status": "active",
+      "version": "v1.3",
+      "status": "moved",
       "owner": "BW Mason",
-      "canonical_path": "skills/sbdc-workshops/",
+      "canonical_path": "https://github.com/bwfnx/sbdc-toolkit/tree/main/skills/sbdc-workshops",
       "target_workspaces": [
         "personal"
       ],

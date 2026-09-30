@@ -53,7 +53,7 @@ Namespaces per context, lifecycle and review dates, `retire --by` instead of del
 | Skill | What it does | Status |
 |---|---|---|
 | [`episode-guide`](skills/episode-guide/) | Season-by-season guide to the best, essential, and skippable episodes of any show or film series, with an optional kid-safe path by age | Active · v1.5 |
-| [`sbdc-workshops`](skills/sbdc-workshops/) | Rebuilds an SBDC class as a branded reveal deck, a QR worksheet form, and an automatic follow-up email | Active · v1.0 |
+| [`sbdc-workshops`](https://github.com/bwfnx/sbdc-toolkit/tree/main/skills/sbdc-workshops) | Rebuilds an SBDC class as a branded reveal deck, a QR worksheet form, and an automatic follow-up email | Moved to bwfnx/sbdc-toolkit |
 | [`transcript-to-action-plan-email`](skills/transcript-to-action-plan-email/) | Turns an SBDC client meeting transcript into a Neoserra-ready follow-up email and action plan | Active · v1.0 |
 | [`competitive-research-analyst`](skills/competitive-research-analyst/) | Current, web-researched competitor, pricing, and market analysis for small businesses | Draft · v1.0 |
 

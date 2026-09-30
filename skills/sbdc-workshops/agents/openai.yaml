@@ -1,9 +1,0 @@
-version: "1"
-interface:
-  display_name: "SBDC Workshops"
-  short_description: "Rebuild an SBDC class as a branded reveal deck, QR worksheet form, and automatic follow-up email"
-  icon: "presentation"
-  accent_color: "#D11142"
-behavior:
-  tool_preferences:
-    - browser
