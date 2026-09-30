@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.2
+- session 2 audit: check each pasted drive id's title and each test-email attachment filename (not just the count), one question per form field, scripted checkpoint pause, submit call at :20, audit reads answers from the sent follow-up emails when the form has no sheet
+
 ## v1.1
 - delivery rules from the session 1 audit: link in chat at minute 0, "don't submit until the last slide", checkpoints cut last, hard stop 5 minutes early, leftovers row from session 2 on, fact-check the speaker notes, post-class audit step
 

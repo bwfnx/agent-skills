@@ -41,7 +41,7 @@ Confirm the date and Zoom link on the UMD calendar before trusting this table. H
    - The run publishes the form. Verify from PowerShell: `Invoke-WebRequest <viewform link>` returns 200 and contains "Your name" (no sign-in wall).
    - Put the live link into `build.py` (`engine.setup(<link>)`) and rebuild. Label stays "Link is in the Zoom chat".
 4. **Email.** Delete `buildWorksheet`/`addItem_`/`CLASS` from the bound script (the form is built; a rerun over live responses would orphan them - the builder also refuses once responses exist). Paste `scripts/apps-script/followup_email.gs`, edit `EMAIL` (subject, heading, subline, `rows` = [label, exact form question title], `next`, file IDs), save, run `installTrigger`, then `sendTestEmail`. **BRANDON** approves the second permission prompt (mail, Drive, triggers).
-5. **Handout ID.** **BRANDON** drags the session handout (xlsx/pdf) into Drive and pastes the link; put the ID in `EMAIL.templateFileId`.
+5. **Handout ID.** **BRANDON** drags the session handout (xlsx/pdf) into Drive and pastes the link; put the ID in `EMAIL.templateFileId`. Before wiring any pasted ID, read its Drive title (`get_file_metadata`) and confirm it is the file the label names. Session 2 shipped the capture template labeled as the compliance matrix because the pasted link was the wrong file.
 6. **Deck PDF.** Headless Edge, fresh profile, write to %TEMP% then copy (Edge will not write into the outputs folder, and a PDF open in a viewer silently does not get overwritten - use a new filename):
    ```powershell
    $edge="C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"; $tmp="$env:TEMP\deck-$(Get-Random).pdf"
@@ -57,7 +57,7 @@ Confirm the date and Zoom link on the UMD calendar before trusting this table. H
 - Every slide screenshotted once at 1280x720 in the Browser pane: no overlap, no text past the frame. Drive slides with `javascript_tool` (`dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight'}))`); real key presses in the pane break on the `data:` URL.
 - Reveal: step counts per slide look sane (roughly 3-11), back arrow lands on the fully built slide, dark/scan slides show everything at once (QR never hidden).
 - Form opens publicly; question titles match `EMAIL.rows` exactly.
-- Test email received with the expected attachment count.
+- Test email received, and each attachment's **filename** matches its `attachedLabel` (read the [TEST] thread with `get_thread`; a count of 2 is not enough).
 - PDF complete.
 
 ## Apps Script editor mechanics (learned the hard way)
@@ -68,7 +68,7 @@ Confirm the date and Zoom link on the UMD calendar before trusting this table. H
 - The Make a copy dialog ignores a typed name and Drive renames through the browser tools fail; the respondent-facing title comes from `CLASS.title`, so only Brandon's Drive list shows "Copy of ...". Tell him to rename it.
 - Do not push binaries into Drive by base64 through tool calls (transcription errors); Brandon drags files in and pastes links.
 
-## Delivery rules (from the Session 1 audit, 2026-09-28)
+## Delivery rules (from the Session 1 and 2 audits, 2026-09-28 / 09-30)
 Session 1 ran 15 minutes over. Both checkpoints were skipped, the chat link landed 19 minutes in, and only 1 of 3 worksheets came back complete. Bake these into every deck and run sheet:
 - **Link in chat at minute 0.** The run sheet's 20-minutes-before list ends with "At 10:00, paste the chat message yourself, before you say hello."
 - **"Don't hit Submit until the last slide"** goes in the chat message, the slide 1 speaker note, and every checkpoint note. The follow-up email fires on submit, so an early submit mails the attendee a near-empty worksheet.
@@ -77,4 +77,8 @@ Session 1 ran 15 minutes over. Both checkpoints were skipped, the chat link land
 - **Leftovers row:** Session 2 onward opens with 4 minutes on the previous session's unanswered chat questions (see step 7).
 - **Term check:** it is a *compliance* matrix, not a "capability matrix."
 - **Fact-check the speaker notes** for thresholds and program rules before the build, and put the checked number in the note. Session 1 misstated on air: the EDWOSB net-worth cap ($850K; $6.5M is the assets cap), who certifies Maryland MBEs (since Oct 1, 2025: the Office of Minority Business Enterprise inside the Department of Social and Economic Mobility, DoSEM; not MDOT), the Maryland MBE goal (29%), and the OSDBU name.
-- **After class:** run the audit. Inputs are the Zoom `.transcript.vtt` + chat `.txt` from Downloads, the responses sheet, and the deck. Output is `outputs/<class>/audit-session-N.md`: plan vs actual, form signals, open loops owed, facts to fix, and changes for the next session.
+- **One question per form field.** "Which hat are you skipping, and who could cover it" got answered as "Sub" and "Contractor" (Session 2). Split two-part prompts into two fields.
+- **Checkpoints need a script, not a mention.** Session 2 named checkpoint B and kept talking. The run sheet says the literal line ("Take three minutes, I'll wait") and to watch the Responses tab until names move.
+- **Call Submit at :20, then take questions.** Session 2 called it at :27 and Q&A vanished. Collect the forms while people ask.
+- **Leftovers stay at 4 minutes;** personal stories go elsewhere. Say weekdays on air, never "tomorrow," in a Mon/Wed/Fri series.
+- **After class:** run the audit. Inputs are the Zoom `.transcript.vtt` + chat `.txt` from Downloads, the responses (a copied form has no linked sheet; the sent follow-up emails in Gmail carry each attendee's answers), and the deck. Check what the follow-up emails actually attached. Output is `outputs/<class>/audit-session-N.md`: plan vs actual, form signals, open loops owed, facts to fix, and changes for the next session.
