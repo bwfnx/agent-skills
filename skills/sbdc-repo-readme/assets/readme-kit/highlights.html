@@ -1,0 +1,86 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+@page{size:1280px 650px;margin:0}
+body{height:650px;padding:40px 52px}
+.grid{display:flex;gap:24px}
+.c{flex:1;padding:22px 22px 20px;height:570px}
+h3{font-weight:900;font-size:23px;letter-spacing:-.015em}
+.in{font-size:14.5px;color:var(--muted);margin:8px 0 14px;height:44px}
+.in b{color:var(--strong)}
+.box{background:var(--sunken);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+.lbl{font-family:Archivo;font-weight:800;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle);margin:0 0 8px}
+/* workshops */
+.out{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--border)}
+.out:last-child{border-bottom:0}
+.ic{width:44px;height:34px;border-radius:7px;background:var(--blue);color:#fff;font-family:Archivo;font-weight:900;font-size:11.5px;letter-spacing:.04em;text-align:center;line-height:34px;flex:none}
+html.dark .ic{background:#2f5d9c}
+.ic.r{background:var(--red)}
+.ot{font-family:Archivo;font-weight:800;font-size:15px;color:var(--strong);line-height:1.2}
+.od{font-size:13px;color:var(--muted);line-height:1.3}
+/* underwriter */
+.p{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:14.5px}
+.p:last-child{border-bottom:0}
+.p span:first-child{color:var(--body);font-weight:700}
+.callout{margin-top:10px;padding:9px 12px;background:var(--tint-red);border-radius:6px;font-size:13.5px;color:var(--body)}
+.callout b{color:var(--red)} html.dark .callout b{color:#ff7a9a}
+/* proposal */
+.bid{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.bid .v{font-family:Archivo;font-weight:900;font-size:20px;color:var(--success)}
+.bid .w{font-size:13.5px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{font-family:Archivo;font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--subtle);text-align:left;padding:0 0 6px}
+td{padding:7px 4px 7px 0;border-top:1px solid var(--border);vertical-align:top;color:var(--body)}
+td.ref{font-family:Archivo;font-weight:800;color:var(--strong);white-space:nowrap}
+.foot{margin:12px 0 0;font-size:13px;color:var(--subtle)}
+</style></head><body>
+<div class="grid">
+
+  <div class="card c">
+    <p class="eyebrow">Workshops</p>
+    <h3>One old class deck in. The whole class kit out.</h3>
+    <p class="in">From <b>"Pricing for Profit"</b> slides, ten minutes of your time.</p>
+    <div class="box">
+      <div class="out"><div class="ic">DECK</div><div><div class="ot">Slide deck</div><div class="od">Click-by-click, your colors, worksheet QR on the title slide</div></div></div>
+      <div class="out"><div class="ic">FORM</div><div><div class="ot">Live worksheet</div><div class="od">Google Form with one section per checkpoint</div></div></div>
+      <div class="out"><div class="ic r">EMAIL</div><div><div class="ot">Automatic follow-up</div><div class="od">Each attendee gets their own answers, links and handout</div></div></div>
+      <div class="out"><div class="ic">PDF</div><div><div class="ot">PDF + run sheet</div><div class="od">Night-before and 20-minute checklists, run of show</div></div></div>
+    </div>
+    <p class="foot">After class: reads the Zoom transcript and lists fixes.</p>
+  </div>
+
+  <div class="card c">
+    <p class="eyebrow">Underwriter &amp; Capital Coach</p>
+    <h3>Read the plan the way the lender will.</h3>
+    <p class="in">Harbor Lane Bakery's <b>$45,000 equipment</b> loan request, reviewed before the bank sees it.</p>
+    <div class="box">
+      <p class="lbl">Five pillars, in lender order</p>
+      <div class="p"><span>Business model &amp; market</span><span class="pill ok">Solid</span></div>
+      <div class="p"><span>Financial feasibility</span><span class="pill gap">Gap</span></div>
+      <div class="p"><span>Operational stability</span><span class="pill flag">Check</span></div>
+      <div class="p"><span>Compliance</span><span class="pill ok">Solid</span></div>
+      <div class="p"><span>Competitive risk</span><span class="pill flag">Check</span></div>
+    </div>
+    <div class="callout"><b>Asked, not assumed:</b> wholesale vs. retail margins aren't split in the books. Get those before projecting repayment.</div>
+    <p class="foot">Also: coaching agenda, full underwriting memo.</p>
+  </div>
+
+  <div class="card c">
+    <p class="eyebrow">Proposal Buddy</p>
+    <h3>From "should I bid?" to a compliance matrix.</h3>
+    <p class="in">A county janitorial bid (<b>IFB 26-114</b>), on the Shipley method.</p>
+    <div class="box">
+      <div class="bid"><span class="v">Bid</span><span class="w">4 of 5 bid/no-bid criteria met — one teaming gap</span></div>
+      <table>
+        <tr><th>Req.</th><th>Answered in</th><th></th></tr>
+        <tr><td class="ref">3.1</td><td>Technical approach, §2</td><td><span class="pill ok">Met</span></td></tr>
+        <tr><td class="ref">3.4</td><td>3 past-performance refs</td><td><span class="pill ok">Met</span></td></tr>
+        <tr><td class="ref">4.2</td><td>Bonding letter</td><td><span class="pill gap">Missing</span></td></tr>
+        <tr><td class="ref">5.0</td><td>Local preference form</td><td><span class="pill flag">Draft</span></td></tr>
+      </table>
+    </div>
+    <p class="foot">Also: capture plan, outline, drafted sections, review.</p>
+  </div>
+
+</div>
+</body></html>

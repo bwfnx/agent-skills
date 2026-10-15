@@ -48,10 +48,11 @@ The repo source is the master. The zip is the deployable artifact.
 ## Public repo rules
 
 ### README: sell it in 5 seconds
-1. **One-line promise at the very top.** What it does for the reader, in plain words. Not the skill name, not the tech.
-2. **Hero image right under it.** A screenshot or GIF of a real output, not a diagram or logo.
-3. **Copy-paste install next.** One code block or one link that gets it running. If it takes more than one step, number the steps.
-4. **Everything else after.** How it works, examples, options, changelog, credits.
+For SBDC repos, build the README with the `sbdc-repo-readme` skill (`skills/sbdc-repo-readme/`); [bwfnx/sbdc-toolkit](https://github.com/bwfnx/sbdc-toolkit) is the reference. The rules it follows:
+1. **One-line promise at the very top.** The banner carries it, and the H1 repeats it under the hero. Plain words, not the tech.
+2. **Hero image right under the banner.** A before/after of a real output with fictional data, not a diagram or logo.
+3. **Install one click away.** An "Install" link in the top nav row; the full steps sit lower, one folded `<details>` per platform.
+4. **Everything else after.** Highlights, catalog, FAQ, notes, license.
 
 ### SBDC and client-work repos
 5. **No real client data in screenshots, examples, or test files.** Use a fictional business (made-up name, numbers, and location) for the hero image and every sample. Check names, emails, dollar figures, and Neoserra IDs before committing.

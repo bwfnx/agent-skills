@@ -1,7 +1,7 @@
 {
   "repo": "agent-skills",
   "canonical_root": "skills/",
-  "last_updated": "2026-09-28",
+  "last_updated": "2026-10-15",
   "skills": [
     {
       "slug": "transcript-to-action-plan-email",
@@ -60,6 +60,21 @@
       "packaged_zip_generated": false,
       "approved_for_sharing": false,
       "notes": "Rebuilds an SBDC class as a Maryland SBDC reveal deck, QR worksheet Google Form, and on-submit follow-up email. Tested on GovCon Session 1 (Sept 28, 2026)."
+    },
+    {
+      "slug": "sbdc-repo-readme",
+      "display_name": "SBDC Repo README",
+      "version": "v1.0",
+      "status": "active",
+      "owner": "BW Mason",
+      "canonical_path": "skills/sbdc-repo-readme/",
+      "target_workspaces": [
+        "personal",
+        "umd-enterprise"
+      ],
+      "packaged_zip_generated": false,
+      "approved_for_sharing": false,
+      "notes": "Captured from the 2026-10-15 bwfnx/sbdc-toolkit README rebuild. Reference output: https://github.com/bwfnx/sbdc-toolkit"
     }
   ]
 }
