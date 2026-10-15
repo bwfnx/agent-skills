@@ -1,0 +1,30 @@
+/* Shared tokens for README images. Mirrors docs/*.html guide styles. */
+@font-face{font-family:Archivo;font-weight:400;src:url(fonts/archivo-latin-400-normal.woff2)}
+@font-face{font-family:Archivo;font-weight:700;src:url(fonts/archivo-latin-700-normal.woff2)}
+@font-face{font-family:Archivo;font-weight:800;src:url(fonts/archivo-latin-800-normal.woff2)}
+@font-face{font-family:Archivo;font-weight:900;src:url(fonts/archivo-latin-900-normal.woff2)}
+
+:root{
+  --red:#d11142; --blue:#002d62; --success:#1f7a4d; --warning:#b8740f;
+  --strong:#002d62; --body:#1f2937; --muted:#4b5563; --subtle:#6b7280;
+  --page:#f6f7f9; --card:#ffffff; --sunken:#eef1f5;
+  --border:#dde2e9; --tint-red:#fde8ee; --tint-blue:#e6eef8; --tint-green:#e8f4ed; --tint-amber:#fbf0dc;
+}
+html.dark{
+  --strong:#eaf1fb; --body:#f3f5f8; --muted:#c9d3e0; --subtle:#aab6c6;
+  --page:#0d1117; --card:#111f36; --sunken:#0a1628;
+  --border:#2b3d57; --tint-red:#3a1222; --tint-blue:#15305a; --tint-green:#123826; --tint-amber:#3a2a0e;
+  --success:#5cc490; --warning:#f0b85a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--body);font:17px/1.5 Arial,Helvetica,sans-serif}
+h1,h2,h3,h4,.display{font-family:Archivo,Arial,sans-serif;color:var(--strong);margin:0;line-height:1.15}
+.eyebrow{font-family:Archivo;font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:13px;color:var(--red);margin:0 0 6px}
+html.dark .eyebrow{color:#ff5c84}
+.rule{width:56px;height:4px;background:var(--red);margin:12px 0 0}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px}
+.pill{display:inline-block;font-family:Archivo;font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:999px}
+.ok{background:var(--tint-green);color:var(--success)}
+.flag{background:var(--tint-amber);color:var(--warning)}
+.gap{background:var(--tint-red);color:var(--red)}
+html.dark .gap{color:#ff7a9a}

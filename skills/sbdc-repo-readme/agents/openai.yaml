@@ -1,0 +1,10 @@
+version: "1"
+interface:
+  display_name: "SBDC Repo README"
+  short_description: "House-style GitHub README with branded banner, hero and highlights images"
+  icon: "book"
+  accent_color: "#002D62"
+behavior:
+  tool_preferences:
+    - code_interpreter
+    - web

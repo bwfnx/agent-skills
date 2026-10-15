@@ -1,0 +1,83 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+@page{size:1280px 760px;margin:0}
+body{height:760px;padding:44px 52px}
+h2{font-weight:900;font-size:36px;letter-spacing:-.02em}
+.row{display:flex;gap:0;margin-top:30px;align-items:stretch}
+.col-in{width:400px}
+.col-arrow{width:76px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.col-out{flex:1}
+.label{font-family:Archivo;font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle);margin:0 0 10px}
+.tx{background:var(--sunken);border:1px solid var(--border);border-radius:10px;padding:18px 20px;height:500px;overflow:hidden;position:relative;font-size:14.5px;line-height:1.5;color:var(--muted)}
+.tx p{margin:0 0 9px}
+.tx b{color:var(--strong);font-family:Archivo;font-weight:700}
+.fade{position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(rgba(238,241,245,0),var(--sunken))}
+html.dark .fade{background:linear-gradient(rgba(10,22,40,0),var(--sunken))}
+.arrow{width:48px;height:48px;border-radius:50%;background:var(--red);color:#fff;font-family:Archivo;font-weight:900;font-size:26px;text-align:center;line-height:46px}
+.arrow-l{font-family:Archivo;font-weight:800;font-size:11px;letter-spacing:.1em;color:var(--red);margin-top:8px;text-transform:uppercase}
+.mail{padding:20px 26px;height:500px;overflow:hidden;position:relative;font-size:15px;line-height:1.48}
+.mail .subj{font-family:Archivo;font-weight:800;color:var(--strong);font-size:16px;padding-bottom:10px;border-bottom:1px solid var(--border);margin:0 0 12px}
+.mail p{margin:0 0 9px}
+.mail h4{font-weight:800;font-size:15.5px;margin:12px 0 5px;color:var(--strong)}
+.mail ol,.mail ul{margin:0 0 4px 20px;padding:0}
+.mail li{margin:0 0 6px}
+.mail .fade{background:linear-gradient(rgba(255,255,255,0),var(--card))}
+html.dark .mail .fade{background:linear-gradient(rgba(17,31,54,0),var(--card))}
+.foot{display:flex;gap:10px;margin-top:18px;align-items:center}
+.foot .t{font-family:Archivo;font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle);margin-right:4px}
+.chip{font-family:Archivo;font-weight:700;font-size:13.5px;color:var(--strong);background:var(--tint-blue);border-radius:999px;padding:5px 13px}
+.note{position:absolute;right:52px;top:52px;font-size:13px;color:var(--subtle)}
+</style></head><body>
+<p class="eyebrow">Transcript to Action Plan</p>
+<h2>A 30-minute client meeting in. The Neoserra-ready email out.</h2>
+<span class="note">Fictional client, real output</span>
+
+<div class="row">
+  <div class="col-in">
+    <p class="label">What you paste: the transcript</p>
+    <div class="tx">
+      <p><b>Advisor:</b> Tell me about Harbor Lane Bakery.</p>
+      <p><b>Dana:</b> Two years open. Wholesale to three coffee shops plus the storefront. The one oven can't keep up. I want a second deck oven and a walk-in — forty-five thousand installed.</p>
+      <p><b>Advisor:</b> Have you talked to a lender?</p>
+      <p><b>Dana:</b> My bank said come back with a business plan and two years of returns. I have the returns. The plan's all in my head.</p>
+      <p><b>Advisor:</b> What does a typical month look like?</p>
+      <p><b>Dana:</b> Eighteen thousand in a good month, twelve in January and February.</p>
+      <p><b>Advisor:</b> Margins on wholesale versus retail?</p>
+      <p><b>Dana:</b> Wholesale is thinner. I haven't separated them in the books.</p>
+      <p><b>Advisor:</b> First, a one-page plan with the payback laid out…</p>
+      <div class="fade"></div>
+    </div>
+  </div>
+
+  <div class="col-arrow"><div class="arrow">→</div><div class="arrow-l">One skill</div></div>
+
+  <div class="col-out">
+    <p class="label">What comes back: the follow-up email</p>
+    <div class="card mail">
+      <p class="subj">SBDC Next Steps — Harbor Lane Bakery</p>
+      <p>Hi Dana,</p>
+      <p>It was nice speaking with you today. Below are my notes, along with some helpful documents and links.</p>
+      <h4>Next Steps</h4>
+      <ol>
+        <li>Complete a one-page business plan covering the second deck oven and walk-in cooler (~$45,000 installed) and its payback timeline. I'll send our template.</li>
+        <li>Starting this month, split wholesale and retail revenue and costs in your bookkeeping so a lender can see both sides.</li>
+        <li>Hold off on a fourth wholesale account until the new equipment is in. Write down what it would order and cost to produce.</li>
+        <li>Before going back to your bank, we'll compare an SBA 7(a) against an SBA microloan for the $45,000.</li>
+        <li>For our next session, bring two years of tax returns and your split books.</li>
+      </ol>
+      <h4>Notes</h4>
+      <ul><li>One-page plan checklist: itemized equipment cost, monthly revenue by season, payback calculation.</li></ul>
+      <div class="fade"></div>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  <span class="t">Also in the reply</span>
+  <span class="chip">Accomplishments &amp; links</span>
+  <span class="chip">Neoserra milestones flagged</span>
+  <span class="chip">Nexus counseling narrative</span>
+  <span class="chip">Follow-up menu A–H</span>
+</div>
+</body></html>
