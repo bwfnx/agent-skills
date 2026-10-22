@@ -43,8 +43,9 @@ unattended/scheduled, use the defaults in brackets and state the assumption.
 
 ## 2. Research (do this before touching output format)
 
-Work only from the advisor's own connected accounts. Cite sources (sender +
-date) for every opportunity.
+Work only from the advisor's own connected accounts and connectors. Cite a
+source for every opportunity: sender + date for email, connector + program link
+for a state database.
 
 **Opportunities — Gmail.** Sweep the full inbox over the opportunity window with a
 broad keyword net: grant, funding, pitch competition, accelerator, SBIR, STTR,
@@ -61,6 +62,24 @@ proposals). For each substantive client capture: business name, last activity,
 sector, geography, stage, readiness signals, and the missing eligibility facts a
 funder would need. Profile the clients with real records in full; list
 intake-only clients behind a disclosure.
+
+**State program database — if a connector is available.** Some states have a
+funding-program connector. Maryland's is the **Maryland Community Business
+Compass** (~700 state and local programs). If its tools are present, run it
+after the client pull; if not, skip this step silently and say nothing.
+
+- For each substantive client, call `recommend_programs` with the client's
+  `county`, `industry`, `business_stage`, and `need` (what they're raising money
+  for). Pass profile fields only, never client names or contact details.
+- Use `search_funding` for a specific need the profile can't express (e.g.
+  "kitchen equipment", "SBIR match", "facade improvement"), filtered by `county`.
+- Call `get_program_details` on any program you plan to score, and take the
+  deadline, award, and eligibility from it rather than the search result.
+- Compass programs are standing programs, not inbox arrivals: list them under
+  **CARRY-FORWARD** unless one has a deadline inside the new-this-week window.
+  If the same program also came in by email, keep one card and cite both.
+- Source line: `Maryland Community Business Compass · <program slug>`, plus the
+  program's source URL.
 
 **Rules/eligibility — verify live, don't hardcode.** SBA, SBIR, and program rules
 change. When a match depends on an eligibility rule (ownership/citizenship for
@@ -133,5 +152,6 @@ complete standalone instruction to run this skill.
   facts are **[not found - confirm]**.
 - Verify SBA/SBIR/program rules live each run; never assert a stale rule.
 - Home geography first, then state, then federal/national.
+- State program connectors get client profile fields only, never client names.
 - If sharing beyond the advisor is mentioned, offer an initials-only / no-internal-
   notes variant — the default packet names real clients and their eligibility gaps.
