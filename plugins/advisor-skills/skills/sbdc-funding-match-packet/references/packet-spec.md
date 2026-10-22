@@ -25,7 +25,7 @@ Match Packet", the week-of date, the opportunity/client windows, and a visible
    single most time-sensitive action. Include a short "also time-sensitive" list
    of near deadlines.
 2. **New opportunities** (new-this-week window) — one card each: name, funder,
-   one-line description, deadline, award, eligibility, source (sender + date).
+   one-line description, deadline, award, eligibility, source (sender + date, or connector + program link).
    Home-geo and state first.
 3. **Carry-forward opportunities** — same card format; end with a one-line
    "expired since last review, don't chase" note.
