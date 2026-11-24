@@ -2,8 +2,8 @@
 
 **Drop-in skills and plugins that make Claude do one job well, the same way every time.**
 
-![Output of the episode-guide skill: a Supernatural watch guide with the Series Best, an Arc-Only Path, and season tables tagged God Mode, Fan Favorite, Core Arc, and Skip](assets/episode-guide-supernatural.png)
-<sub>Real output from the <code>episode-guide</code> skill. See more in <a href="https://github.com/bwfnx/watch-guides">watch-guides</a>.</sub>
+![Output of the durable-learning plugin at the start of a session: the count of active learnings by namespace, the commands to query them, and the known pitfalls, followed by the list of learnings](assets/durable-learning-session-start.png)
+<sub>Real output from the <code>durable-learning</code> plugin at session start, on a made-up store (local path shortened).</sub>
 
 ## Install
 
@@ -20,12 +20,12 @@ claude plugin install advisor-skills@bwfnx
 
 ```bash
 git clone https://github.com/bwfnx/agent-skills
-cp -r agent-skills/skills/episode-guide ~/.claude/skills/
+cp -r agent-skills/skills/transcript-to-action-plan-email ~/.claude/skills/
 ```
 
-**Claude app, Cowork, or ChatGPT:** add the marketplace under Settings → Plugins (`bwfnx/agent-skills`), or zip a skill folder (for example `skills/episode-guide/`) and upload it wherever your app accepts skills. Hooks (`guardrails`) run in Claude Code only.
+**Claude app, Cowork, or ChatGPT:** add the marketplace under Settings → Plugins (`bwfnx/agent-skills`), or zip a skill folder (for example `skills/transcript-to-action-plan-email/`) and upload it wherever your app accepts skills. Hooks (`guardrails`) run in Claude Code only.
 
-Then just ask for the job, like "best episodes of Supernatural, and what can I skip?"
+Then just ask for the job, like "turn this meeting transcript into a follow-up email and action plan."
 
 ## Start here: durable-learning
 
@@ -52,7 +52,6 @@ Namespaces per context, lifecycle and review dates, `retire --by` instead of del
 
 | Skill | What it does | Status |
 |---|---|---|
-| [`episode-guide`](skills/episode-guide/) | Season-by-season guide to the best, essential, and skippable episodes of any show or film series, with an optional kid-safe path by age | Active · v1.5 |
 | [`sbdc-workshops`](https://github.com/bwfnx/sbdc-toolkit/tree/main/skills/sbdc-workshops) | Rebuilds an SBDC class as a branded reveal deck, a QR worksheet form, and an automatic follow-up email | Moved to bwfnx/sbdc-toolkit |
 | [`transcript-to-action-plan-email`](skills/transcript-to-action-plan-email/) | Turns an SBDC client meeting transcript into a Neoserra-ready follow-up email and action plan | Active · v1.0 |
 | [`competitive-research-analyst`](skills/competitive-research-analyst/) | Current, web-researched competitor, pricing, and market analysis for small businesses | Draft · v1.0 |
